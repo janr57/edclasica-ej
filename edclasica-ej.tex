@@ -1,0 +1,56 @@
+% edclasica-ej.tex 
+% Fichero principal
+%
+% Copyright (C) 2019-2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+\documentclass[a4paper,10pt]{report}
+
+% Paquetes
+\usepackage{edclasica-ej.pkg}
+% Definiciones
+\usepackage{edclasica-ej.defs}
+
+\begin{document}
+% -----------------------------------------------------------------------------
+% Añade 'Portada' al índice pdf.
+\phantomsection \hypertarget{TOC}{}
+\bookmark[level=0,dest=TOC]{Portada}
+% Crea la portada.
+\thispagestyle{empty}
+\include{./portada/portada}
+% -----------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
+% Añade 'Contenidos' al índice pdf.
+\hypertarget{Contents}{} \phantomsection
+\bookmark[level=0,dest=Contents]{Contenidos}
+% Estilo de página como 'empty' pero con número de página.
+\pagestyle{plain}
+% Crea la tabla de contenidos.
+\include{./tablacontenidos/tablacontenidos}
+% -----------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
+\part{Ejercicios Planteados}
+%
+\renewcommand*{\tipoDocumento}{ejercicios}
+\renewcommand*{\parte}{EJERCICIOS DE ELECTRODINÁMICA CLÁSICA}
+% ------ Matemáticas -----------------------
+\setcounter{isheet}{1}
+\renewcommand*{\mainsubject}{Matemáticas}
+\phantomsection \addcontentsline{toc}{section}{\theisheet. \mainsubject}
+\pagestyle{ejercicios}
+\include{./ejercicios/ed-matematicas}
+% ------ Campos ----------------------------
+\renewcommand*{\mainsubject}{Electrostática}
+\addtocounter{isheet}{1}
+\phantomsection \addcontentsline{toc}{section}{\theisheet. \mainsubject}
+\include{./ejercicios/ed-electrostatica}
+
+% -----------------------------------------------------------------------------
+\end{document}
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: t
+%%% End:

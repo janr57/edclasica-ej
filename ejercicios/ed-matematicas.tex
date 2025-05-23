@@ -1,0 +1,1802 @@
+% ed-matematicas.tex
+%
+% Copyright (C) 2019-2025 José A. Navarro Ramón <janr.devel@gmail.com>
+%
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% HOJA
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+%\phantomsection
+%\addcontentsline{toc}{subsection}{Hoja 1}
+\setcounter{isubsheet}{1}
+
+% Añade 'Contenidos' al índice pdf.
+% \bookmark[level=2,dest=section]{Hoja 1}
+% Nombre de enlace: 'cc1.2'
+\pdfbookmark[2]{Hoja 1}{mathj01}
+
+\begin{ejercicio}
+% --------------------------------------------------------------------------
+% Producto escalar y producto vectorial
+% --------------------------------------------------------------------------
+\item 
+  Demuestre que los productos escalar y vectorial son distributivos
+usando las definiciones
+  \[ \vvv{A}\cdot \vvv{B} \equiv A B \cos\theta
+  \] y
+  \[ \vvv{A}\prodvec \vvv{B} \equiv A B \sin\theta \xhat{n}
+  \] y los diagramas que se necesiten
+  \begin{subejercicio}
+  \item Cuando los tres vectores son coplanares.
+  \item En el caso general.
+  \end{subejercicio}
+
+% ...........................................................................
+  \showSolved{res/matematicas}{matematicas-001.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+% Producto vectorial
+% --------------------------------------------------------------------------
+\item
+  ¿Es asociativo el producto vectorial?
+  \[
+    (\vvv{A}\prodvec\vvv{B})\prodvec\vvv{C}
+    \questeq
+    \vvv{A}\prodvec (\vvv{B}\prodvec\vvv{C})
+  \]
+  Demuéstrelo si lo es o muestre el contraejemplo, lo más simple posible,
+  en caso contrario.
+
+% ...........................................................................
+  \showSolved{res/matematicas}{matematicas-002.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+%  Producto escalar
+% --------------------------------------------------------------------------
+\item
+  Calcule el ángulo entre las diagonales principales de un cubo.
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-003.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+% Producto vectorial
+% --------------------------------------------------------------------------
+\item
+  Use el producto vectorial para encontrar los componentes del vector unitario
+  $\xhat{n}$ perpendicular al plano sombreado de la figura~\ref{fig:edcmat-prod-vect-n}.
+  \vspace{-2ex}
+  \begin{figure}[ht]
+    \def\scl{.75}
+    % Puntos de corte del plano con los ejes en la proporción [0-1]
+    \pgfmathsetmacro{\CZ}{.7}
+    \pgfmathsetmacro{\CY}{2*\CZ/3}
+    \pgfmathsetmacro{\CX}{.4*\CZ}
+    \centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      eje/.style={->,line width=.8pt},
+      vectorNormal/.style={-{Latex[round]}, line width=1.1pt},
+      ]
+      %
+      % COORDENADAS
+      % Origen
+      \coordinate (O) at (0,0);
+      % Extremos de los ejes
+      \coordinate (ejeX) at (-1.0,-1.0);
+      \coordinate (ejeY) at (2,0);
+      \coordinate (ejeZ) at (0,2);
+      % Puntos de corte del plano con los ejes
+      \coordinate (corteX) at ($(O) !\CX! (ejeX)$);
+      \coordinate (corteY) at ($(O) !\CY! (ejeY)$);
+      \coordinate (corteZ) at ($(O) !\CZ! (ejeZ)$);
+      % Origen del vector normal
+      \coordinate (on) at (.3,.3);
+      %
+      % DIBUJO
+      % Ejes
+      \draw[eje] (O) -- (ejeX) node[left]{$x$};
+      \draw[eje] (O) -- (ejeY) node[below=3pt]{$y$};
+      \draw[eje] (O) -- (ejeZ) node[left=3pt] {$z$};
+      % Plano
+      %\filldraw[fill=green!20, draw=black, opacity=.8] (corteX) -- (corteY) -- (corteZ) -- cycle;
+      \filldraw[fill=black!15, draw=black, opacity=.8] (corteX) -- (corteY) -- (corteZ) -- cycle;
+      \node[below] at (corteX) {\small $1$};
+      \node[below] at (corteY) {\small $2$};
+      \node[left] at (corteZ) {\small $3$};
+      % Vector normal al plano
+      \draw[vectorNormal] (on) -- (40:1.5) node[right] {$\xhat{n}$};
+      \filldraw (on) circle[radius=1pt];
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-prod-vect-n}
+  \end{figure}
+
+  \vspace{-1ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-004.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+%  Producto vectorial
+% --------------------------------------------------------------------------
+\item Demuestre
+  $\vvv{A} \times (\vvv{B}\times\vvv{C})
+  = \vvv{B}(\vvv{A}\cdot\vvv{C}) - \vvv{C}(\vvv{A}\cdot\vvv{B})$ escribiendo
+  ambos miembros en términos de las componentes de los vectores.
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-005.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+%  Producto vectorial
+% --------------------------------------------------------------------------
+\item Demuestre que
+  $[\vvv{A}\times (\vvv{B}\times\vvv{C})]
+  + [\vvv{B}\times (\vvv{C}\times\vvv{A})]
+  + [\vvv{C}\times (\vvv{A}\times\vvv{B})]
+  = 0$
+  
+  ¿En qué condiciones se cumple
+  $\vvv{A}\times (\vvv{B}\times\vvv{C}) = (\vvv{A}\times\vvv{B})\times\vvv{C}$?
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-006.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+%  Vector de posición
+% --------------------------------------------------------------------------
+\item Encuentre el vector separación $\brcurs$ entre el punto fuente $(2,8,7)$ al
+  punto del campo $(4,6,8)$. Determine su módulo $\rcurs$ y construya el vector
+  unitario $\hrcurs$ correspondiente.
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-007.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+%  Matrices de rotación
+% --------------------------------------------------------------------------
+\item
+  \begin{subejercicio}
+  \item Pruebe que la matriz de rotación $2\times 2$
+    \[
+      \begin{pNiceMatrix}
+        \overline{A}_y\\
+        \overline{A}_z
+      \end{pNiceMatrix}
+      =
+      \begin{pNiceMatrix}
+        \cos\phi & \sin\phi\\
+        -\sin\phi & \cos\phi
+      \end{pNiceMatrix}
+      \begin{pNiceMatrix}
+        A_y\\
+        A_z
+      \end{pNiceMatrix}
+    \]
+    preserva el producto escalar. Esto es, muestre que
+    \[
+    \overline{A}_y\,\, \overline{B}_y + \overline{A}_z\,\, \overline{B}_z
+    = A_y B_y + A_z B_z
+  \]
+\item ¿Qué restricciones deben cumplir los elementos $R_{ij}$ de la matriz
+  de rotación en tres dimensiones
+  \[
+    \begin{pNiceMatrix}
+      \overline{A}_x\\
+      \overline{A}_y\\
+      \overline{A}_z
+    \end{pNiceMatrix}
+    =
+    \begin{pNiceMatrix}
+      R_{xx} & R_{xy} & R_{xz}\\
+      R_{yx} & R_{yy} & R_{yz}\\
+      R_{zx} & R_{zy} & R_{zz}\\
+    \end{pNiceMatrix}
+    \begin{pNiceMatrix}
+      A_x\\
+      A_y\\
+      A_z
+    \end{pNiceMatrix}
+  \]
+  para que se conserve la longitud de $\vvv{A}$ (para todos los vectores $\vvv{A}$)?
+  \end{subejercicio}
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-008.pdf}
+% ...........................................................................
+%\medskip
+%{\color{gray}
+%\hrule
+%}
+
+% #########################################################################################
+% #########################################################################################
+% #########################################################################################
+
+\clearpage
+% \phantomsection
+%\addcontentsline{toc}{subsection}{Hoja 1}
+%\setcounter{isubsheet}{2}
+\stepcounter{isubsheet} 
+
+% Añade 'Contenidos' al índice pdf.
+% \bookmark[level=2,dest=section]{Hoja 1}
+% Nombre de enlace: 'cc1.2'
+\pdfbookmark[2]{Hoja 2}{mathj02}
+
+% --------------------------------------------------------------------------
+%  Matriz de rotación
+% --------------------------------------------------------------------------
+\item Encuentre la matriz de transformación $\mmm{R}$ que describa una rotación
+  de \ang{120} alrededor de un eje que pase por el origen y por el punto $(1,1,1)$.
+  La rotación debe ser antihoraria en cuando se observa el eje hacia el origen.
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  %\showSolved{res/matematicas}{matematicas-009.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+\hrule
+}
+
+% --------------------------------------------------------------------------
+%  
+% --------------------------------------------------------------------------
+\item
+  \begin{subejercicio}
+  \item ¿Cómo se transforman las componentes de un vector\footnotemark{} bajo una \emph{transformación} de
+    coordenadas ($\overline{x} = x$, $\overline{y} = -a$, $\overline{z} = z$,
+    Fig.~\ref{fig:edcmat-dos-SR-separados})?
+    \footnotetext{Un escalar no varía al cambiar las coordenadas. En particular, las componentes de un
+      vector no son escalares, pero su módulo sí lo es.\\}
+  \item ¿Cómo se transforman las componentes de un vector bajo una \emph{inversión} de
+    coordenada ($\overline{x} = x$, $\overline{y} = -a$, $\overline{z} = z$,
+    Fig.~\ref{fig:edcmat-dos-SR-origen-comun})?
+  \item ¿Cómo se transforman las componentes de un producto vectorial
+    \[
+      \vvv{A}\times\vvv{B}
+      = (A_y B_z - A_z B_y)\xhat{x} + (A_z B_x - A_x B_z)\xhat{y} + (A_x B_y - A_y B_x)\xhat{z}
+    \]
+    bajo una inversión de coordenadas
+    (el producto vectorial de dos vectores se denomina \emph{pseudovector} a causa de este
+    comportamiento \emph{anómalo})?
+    Es el producto vectorial de dos pseudovectores un vector o pseudovector? Nombra dos
+    magnitudes que sean pseudovectores en mecánica clásica.
+  \item ¿Cómo se transforma el producto triple de vectores bajo inversiones (este objeto se
+    llama \emph{pseudoescalar})?
+  \end{subejercicio}
+  \begin{figure}[ht]
+      \def\scl{1}
+      \pgfmathsetmacro{\XLEN}{1.5}
+      \pgfmathsetmacro{\YLEN}{2.5}
+      \pgfmathsetmacro{\ZLEN}{1.5}
+      \pgfmathsetmacro{\YDESPLONE}{.9}
+      \pgfmathsetmacro{\ORIGRADIUS}{.6}
+      \centering
+      \begin{minipage}{.45\linewidth}
+        \centering
+      \begin{tikzpicture}[%
+        scale=\scl,
+        eje/.style={->,thick},
+        ]
+        %
+        % COORDENADAS
+        % SISTEMA DE COORDENADAS ORIGINAL O
+        \coordinate (O) at (0,0);
+        \path (O) -- +(225:\XLEN) coordinate (ejex);
+        \coordinate (ejey) at ($(O) + (\YLEN,0)$);
+        \coordinate (ejez) at ($(O) + (0,\ZLEN)$);
+        % SISTEMA DE COORDENADAS DESPLAZADO O'
+        \coordinate (O') at (\YDESPLONE, 0);
+        \coordinate (ejex') at ($(ejex) + (\YDESPLONE,0)$);
+        \coordinate (ejey') at ($(ejey) + (\YDESPLONE,0)$);
+        \coordinate (ejez') at ($(ejez) + (\YDESPLONE,0)$);
+        %
+        % DIBUJO
+        % SC ORIGINAL
+        \draw[eje] (O) -- (ejex) node[above left=-2pt and 0pt] {$x$};
+        \draw[eje] (O) -- (ejey) node[below left=2pt and 0pt] {$y$};
+        \draw[eje] (O) -- (ejez) node[below left=0pt and 2pt] {$z$};
+        \filldraw (O) circle[radius=\ORIGRADIUS pt];
+        % SC DESPLAZADO
+        \draw[eje] (O') -- (ejex') node[above left=-2pt and 0pt] {$\overline{x}$};
+        \draw[eje] (O') -- (ejey') node[below left=0pt and 0pt] {$\overline{y}$};
+        \draw[eje] (O') -- (ejez') node[below left=-3pt and 2pt] {$\overline{z}$};
+        \filldraw (O') circle[radius=\ORIGRADIUS pt];
+        % Separation distance
+        \path (O) -- node[midway,above] {$a$} (O');
+      \end{tikzpicture}
+      \caption{}
+      \label{fig:edcmat-dos-SR-separados}
+    \end{minipage}
+    \hspace{1em}
+    \begin{minipage}{.45\linewidth}
+      \pgfmathsetmacro{\XLEN}{1.5}
+      \pgfmathsetmacro{\YLEN}{2.0}
+      \pgfmathsetmacro{\ZLEN}{1.5}
+      \pgfmathsetmacro{\YDESPLTWO}{-.15}
+      \pgfmathsetmacro{\ORIGRADIUS}{.6}
+      \centering
+      \begin{tikzpicture}[%
+        scale=\scl,
+        eje/.style={->,thick},
+        ]
+        % 
+        % COORDENADAS
+        % SISTEMA DE COORDENADAS ORIGINAL O
+        \coordinate (O) at (0,0);
+        \path (O) -- +(225:\XLEN) coordinate (ejex);
+        \coordinate (ejey) at ($(O) + (\YLEN,0)$);
+        \coordinate (ejez) at ($(O) + (0,\ZLEN)$);
+        % SISTEMA DE COORDENADAS DESPLAZADO O'
+        \coordinate (O') at (\YDESPLTWO, 0);
+        \path (O') -- +(45:\XLEN) coordinate (ejex');
+        \coordinate (ejey') at ($(O') + (-\YLEN,0)$);
+        \coordinate (ejez') at ($(O') + (0,-\ZLEN)$);
+        % 
+        % DIBUJO
+        % SC ORIGINAL
+        \draw[eje] (O) -- (ejex) node[above left=-2pt and 0pt] {$x$};
+        \draw[eje] (O) -- (ejey) node[below left=2pt and 0pt] {$y$};
+        \draw[eje] (O) -- (ejez) node[below left=0pt and 2pt] {$z$};
+        \filldraw (O) circle[radius=\ORIGRADIUS pt];
+        % SC DESPLAZADO
+        \draw[eje] (O') -- (ejex') node[below right=-2pt and 0pt] {$\overline{x}$};
+        \draw[eje] (O') -- (ejey') node[below right=0pt and 0pt] {$\overline{y}$};
+        \draw[eje] (O') -- (ejez') node[above right=0pt and 2pt] {$\overline{z}$};
+        \filldraw (O') circle[radius=\ORIGRADIUS pt];
+      \end{tikzpicture}
+      \caption{}
+      \label{fig:edcmat-dos-SR-origen-comun}
+    \end{minipage}
+  \end{figure}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-010.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Gradiente
+  % --------------------------------------------------------------------------
+\item Encuentre el gradiente de las siguientes funciones:
+  \begin{subejercicio}
+  \item $f(x,y,z) = x^2 + y^3 + z^4$.
+  \item $f(x,y,z) = x^2 y^3 z^4$.
+  \item $f(x,y,z) = e^x \sin y \ln z$.
+  \end{subejercicio}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-011.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Gradiente
+  % --------------------------------------------------------------------------
+\item La altura de una colina (en pies) está dada por
+  \[
+    h(x,y) = 10 (2xy - 3x^2 - 4y^2 - 18x + 28y + 12
+  \]
+  donde $x$ e $y$ son las distancias (en millas) desde South Hadley.
+  
+  \begin{subejercicio}
+  \item ¿Dónde está situado el pico de la colina?
+  \item ¿Qué altura tiene este pico?
+  \item ¿Cuál es la pendiente (en pies por milla) en un punto situado una
+    milla al norte y una milla al este de South Hadley?
+    ¿En qué dirección es más pronunciada la pendiente en ese punto?
+  \end{subejercicio}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-012.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Gradiente
+  % --------------------------------------------------------------------------
+\item Sea $\brcurs$ el vector que separa un punto fijo $(x',y',z')$ del
+  punto $(x,y,z)$, y sea $\rcurs$ su longitud. Compruebe que
+  \begin{subejercicio}
+  \item $\vvv{\nabla} \rcurs^2 = 2\brcurs$.
+  \item $\vvv{\nabla} 1/\rcurs = -\hrcurs/\rcurs^2$.
+  \item ¿Cuál es la fórmula general para $\vvv{\nabla} \rcurs^n$?
+  \end{subejercicio}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-013.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Gradiente
+  % --------------------------------------------------------------------------
+\item Suponga que $f$ es una función de dos variables, $y$ y $z$.
+  Demuestre que el gradiente
+  $\vvv{\nabla} f = (\partial f/\partial y)\xhat{y} + (\partial f/\partial z)\xhat{z}$
+  se transforma como un vector bajo rotaciones.
+  \[
+    \begin{pNiceMatrix}
+      \overline{A}_y\\
+      \overline{A}_z
+    \end{pNiceMatrix}
+    =
+    \begin{pNiceMatrix}
+      \cos\phi & \sin\phi\\
+      -\sin\phi & \cos\phi
+    \end{pNiceMatrix}
+    \begin{pNiceMatrix}
+      A_y\\
+      A_z
+    \end{pNiceMatrix}
+  \]
+  [Pista:
+  $(\partial f/\partial\overline{y})(\partial y/\partial\overline{y})
+  + (\partial f/\partial\overline{z}) (\partial z/\partial\overline{z})$,
+  y la fórmula análoga para $\partial f/\partial\overline{z}$. Sabemos que
+  $\overline{y} = y\cos\phi + z\sin\phi$ y $\overline{z} = -y\sin\phi + z\cos\phi$;
+  ``resuelva'' estas ecuaciones para $y$ y $z$ (como funciones de $\overline{y}$ y
+  $\overline{z}$), y calcule las derivadas intermedias $\partial y/\partial\overline{y}$,
+  $\partial z/\partial\overline{y}$, etc.]
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-014.pdf}
+  % ...........................................................................
+  % \medskip
+  % {\color{gray}
+  % \hrule
+  % }
+  
+  %   #########################################################################################
+  %   #########################################################################################
+  %   #########################################################################################
+  
+  \clearpage
+  % \phantomsection
+  % \addcontentsline{toc}{subsection}{Hoja 1}
+  %\setcounter{isubsheet}{3}
+  \stepcounter{isubsheet} 
+  
+  % Añade 'Contenidos' al índice pdf.
+  % \bookmark[level=2,dest=section]{Hoja 1}
+  % Nombre de enlace: 'cc1.2'
+  \pdfbookmark[2]{Hoja 3}{mathj03}
+  
+  % --------------------------------------------------------------------------
+  % Divergencia
+  % --------------------------------------------------------------------------
+\item Calcule la divergencia de las siguientes funciones vectoriales:
+  \begin{subejercicio}
+  \item $\vvv{v}_a = x^2 \xhat{x} + 3xz^2 \xhat{y} - 2xz \xhat{z}$.
+  \item $\vvv{v}_b = xy \xhat{x} + 2yz \xhat{y} + 3zx \xhat{z}$.
+  \item $\vvv{v}_c = y^2 \xhat{x} + (2xy+z^2) \xhat{y} + 2yz \xhat{z}$.
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-015.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Divergencia
+  % --------------------------------------------------------------------------
+\item Represente un boceto de la función vectorial
+  $\vvv{v} = \xhat{r}/r^2$
+  % \[
+  %   \vvv{v} = \frac{\xhat{r}}{r^2}
+  % \]
+  y calcule su divergencia. La solución le podría desconcertar, ¿puede dar una explicación?
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-016.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Divergencia
+  % --------------------------------------------------------------------------
+\item Demuestre que en dos dimensiones, la divergencia se transforma como un escalar bajo
+  rotaciones.\\
+  (Pista: Use la ecuación para calcular $\bar{v}_y$ y $\bar{v}_z$ y calcule sus derivadas
+  parciales.\\
+  Se debe demostrar que
+  $\partial\bar{v}_y/\partial\bar{y} + \partial\bar{v}_z/\partial\bar{z}
+  = \partial v_y/\partial y + \partial v_z/\partial z$
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-017.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Rotacional
+  % --------------------------------------------------------------------------
+\item Calcule el rotacional de las siguientes funciones vectoriales:
+  \begin{subejercicio}
+  \item $\vvv{v}_a = x^2 \xhat{x} + 3xz^2 \xhat{y} - 2xz \xhat{z}$.
+  \item $\vvv{v}_b = xy \xhat{x} + 2yz \xhat{y} + 3zx \xhat{z}$.
+  \item $\vvv{v}_c = y^2 \xhat{x} + (2xy+z^2) \xhat{y} + 2yz \xhat{z}$.
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-018.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Rotacional
+  % --------------------------------------------------------------------------
+\item Dibuje un círculo en el plano $xy$. En unos cuantos puntos representativos dibuje
+  el vector $\vvv{v}$ tangente al círculo en sentido antihorario. Comparando vectores
+  adyacentes, determine el signo de $\partial v_x/\partial y$ y $\partial v_y/\partial x$.
+  De acuerdo con la ecuación
+  \vspace{-.5ex}
+  \[
+    \vvv{\nabla}\times\vvv{v}
+    =
+    \begin{vNiceMatrix}
+      \xhat{x} & \xhat{y} & \xhat{z}\\
+      \partial/\partial x & \partial/\partial y & \partial/\partial z\\
+      v_x & v_y & v_z \\
+    \end{vNiceMatrix}
+  \]
+  ¿Cuál será la dirección y sentido de $\vvv{\nabla}\times\vvv{v}$?
+  Explique cómo este ejemplo ilustra la interpretación geométrica del rotacional.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-019.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Divergencia y Rotacional
+  % --------------------------------------------------------------------------
+\item Construya una función vectorial cuya divergencia y rotacional sean nulos
+  en todo punto. Una función constante serviría, pero esperamos que presente
+  una función un poco más interesante.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-020.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Gradiente, divergencia y rotacional
+  % --------------------------------------------------------------------------
+\item Demuestre las siguientes propiedades:
+  \begin{subejercicio}
+  \item $\vvv{\nabla} (fg) = f\vvv{\nabla} g + g\vvv{\nabla} f$
+  \item $\vvv{\nabla}\cdot (\vvv{A}\times\vvv{B})
+    = \vvv{B}\cdot(\vvv{\nabla}\times\vvv{A}) - \vvv{A}\cdot(\vvv{\nabla}\times\vvv{B})$
+  \item $\vvv{\nabla}\times (f\vvv{A})
+    = f(\vvv{\nabla}\times\vvv{A}) - \vvv{A}\times (\vvv{\nabla} f)$
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-021.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item 
+  \begin{subejercicio}
+  \item Si $\vvv{A}$ y $\vvv{B}$ son dos funciones vectoriales, ¿qué significa
+    la expresión $(\vvv{A}\cdot\vvv{\nabla})\vvv{B}$?
+    (Esto es, ¿cuáles son sus componentes $x$, $y$ y $z$ en términos de las
+    componentes cartesianas de $\vvv{A}$, $\vvv{B}$ y $\vvv{\nabla}$?)
+  \item Calcule $(\xhat{r}\cdot\vvv{\nabla})\xhat{r}$.
+  \item Calcule $(\vvv{v}_a\cdot\vvv{\nabla})\vvv{v}_b$ para las funciones vectoriales
+    $\vvv{v}_a = x^2 \xhat{x} + 3xz^2 \xhat{y} - 2xz \xhat{z}$,
+    $\vvv{v}_b = xy \xhat{x} + 2yz \xhat{y} + 3zx \xhat{z}$ y
+    $\vvv{v}_c = y^2 \xhat{x} + (2xy+z^2) \xhat{y} + 2yz \xhat{z}$.
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-022.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item (Sólo para masoquistas). Demuestre que se cumplen las igualdades:
+  \begin{subejercicio}
+  \item
+    $\vvv{\nabla}(\vvv{A}\cdot\vvv{B})
+    = \vvv{A}\times (\vvv{\nabla}\times\vvv{B}
+    + \vvv{B}\times (\vvv{\nabla}\times\vvv{A}
+    + (\vvv{A}\cdot\vvv{\nabla})\vvv{B}
+    + (\vvv{B}\cdot\vvv{\nabla})\vvv{A}$
+  \item
+    $\vvv{\nabla}\times (\vvv{A}\times\vvv{B})
+    = (\vvv{B}\cdot\vvv{\nabla})\vvv{A}
+    - (\vvv{A}\cdot\vvv{\nabla})\vvv{B}
+    + \vvv{A} (\vvv{\nabla}\cdot\vvv{B})
+    - \vvv{B} (\vvv{\nabla}\cdot\vvv{A})$
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-023.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item Demuestre las siguientes igualdades
+  \smallskip
+  \begin{subejercicio}
+  \item
+    $\vvv{\nabla}\left(\dfrac{f}{g}\right)
+    = \dfrac{g\vvv{\nabla}f - f\vvv{\nabla}g}{g^2}$\\[.3ex]
+  \item
+    $\vvv{\nabla}\cdot\left(\dfrac{\vvv{\nabla}}{g}\right)
+    = \dfrac{g(\vvv{\nabla}\cdot\vvv{A}) - \vvv{A}\cdot(\vvv{\nabla}g)}{g^2}$\\[.3ex]
+  \item
+    $\vvv{\nabla}\times\left(\dfrac{\vvv{\nabla}}{g}\right)
+    = \dfrac{g(\vvv{\nabla}\times\vvv{A}) + \vvv{A}\times(\vvv{\nabla}g)}{g^2}$
+  \end{subejercicio}
+
+  \medskip
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-024.pdf}
+  % ...........................................................................
+  \medskip
+  % \medskip
+  % {\color{gray}
+  % \hrule
+  % }
+  
+  %   #########################################################################################
+  %   #########################################################################################
+  %   #########################################################################################
+  
+  \clearpage
+  % \phantomsection
+  % \addcontentsline{toc}{subsection}{Hoja 1}
+  %\setcounter{isubsheet}{3}
+  \stepcounter{isubsheet} 
+  
+  % Añade 'Contenidos' al índice pdf.
+  % \bookmark[level=2,dest=section]{Hoja 1}
+  % Nombre de enlace: 'cc1.2'
+  \pdfbookmark[2]{Hoja 4}{mathj04}
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item 
+  \begin{subejercicio}
+  \item Compruebe la propiedad
+    $\vvv{\nabla}\cdot (\vvv{A}\times\vvv{B})
+    = \vvv{B}\cdot (\vvv{\nabla}\times\vvv{A}) - \vvv{A}\cdot (\vvv{\nabla}\times\vvv{B})$
+    calculando cada término (por separado) para las funciones
+    $\vvv{A} = x\xhat{x} + 2y\xhat{y} + 3z\xhat{z}$ y
+    $\vvv{B} = 3y\xhat{x} - 2x\xhat{y}$.
+  \item Haga lo mismo para la propiedad
+    $\vvv{\nabla}(\vvv{A}\cdot\vvv{B})
+    = \vvv{A}\times (\vvv{\nabla}\times\vvv{B}
+    + \vvv{B}\times (\vvv{\nabla}\times\vvv{A}
+    + (\vvv{A}\cdot\vvv{\nabla})\vvv{B}
+    + (\vvv{B}\cdot\vvv{\nabla})\vvv{A}$
+  \item Vuelva a hacer lo mismo para la propiedad
+    $\vvv{\nabla}\times (\vvv{A}\times\vvv{B})
+    = (\vvv{B}\cdot\vvv{\nabla})\vvv{A}
+    - (\vvv{A}\cdot\vvv{\nabla})\vvv{B}
+    + \vvv{A} (\vvv{\nabla}\cdot\vvv{B})
+    - \vvv{B} (\vvv{\nabla}\cdot\vvv{A})$    
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-025.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Laplaciano
+  % --------------------------------------------------------------------------
+\item Calcule el laplaciano de las siguientes funciones
+  \begin{subejercicio}
+  \item $T_a = x^2 + 2xy + 3z + 4$.
+  \item $T_b = \sin x \sin y \sin z$.
+  \item $T_c = e^{-5x} \sin 4y \cos 3z$.
+  \item $\vvv{v} = x^2\xhat{x} + 3xz^2\xhat{y} - 2xz\xhat{z}$.
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-026.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Divergencia de un rotacional
+  % --------------------------------------------------------------------------
+\item Pruebe que la divergencia de un rotacional siempre vale cero. Compruébelo
+  para $\vvv{v}_a = x^2\xhat{x} + 3xz^2\xhat{y} - 2xz\xhat{z}$.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-027.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Rotacional de un gradiente
+  % --------------------------------------------------------------------------
+\item Pruebe que el rotacional de un gradiente siempre vale cero. Compruébelo
+  para $f(x,y,z) = x^2 y^3 z^4$.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-028.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Integral de línea
+  % --------------------------------------------------------------------------
+\item Calcule la integral de línea de la función
+  $\vvv{v} = x^2\xhat{x} + 2yz\xhat{y} + y^2\xhat{z}$ desde el origen hasta
+  el punto $(1,1,1)$ a trevés de tres caminos diferentes:
+  \begin{subejercicio}
+  \item $(0,0,0) \longrightarrow (1,0,0)
+    \longrightarrow (1,1,0) \longrightarrow (1,1,1).$
+  \item $(0,0,0) \longrightarrow (0,0,1)
+    \longrightarrow (0,1,1) \longrightarrow (1,1,1).$
+  \item Siguiendo una línea recta desde $(0,0,0)$ hasta $(1,1,1)$.
+  \item ¿Cuánto vale la integral de línea cuando se sigue el bucle cerrado
+    cuando se sale del camino del apartado $a)$ y se vuelve por el camino $b)$?
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-029.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Integral de superfice
+  % --------------------------------------------------------------------------
+\item Calcule la integral de línea de la función
+  $\vvv{v} = 2xz\xhat{x} + (x+2)\xhat{y} + y(z^2-3)\xhat{z}$ a través de todas
+  las caras del cubo de \SI{2}{\metre} de arista de la figura~\ref{fig:edcmat-cubo1}
+  (exceptuando la de la base).
+  El sentido de cada una de las caras es hacia fuera del cubo.
+  \vspace{-1ex}
+  \begin{figure}[ht]
+    \def\scl{.65}
+    %\tdplotsetmaincoords{0}{0}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \pgfmathsetmacro{\LONGCUBO}{1.5}
+    \centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      %tdplot_main_coords,
+      eje/.style={->,line width=.6pt,black},
+      %cubo/.style={white,double=black,double distance=.1mm,join=bevel,line width=1.2pt},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCUBO,0);
+      \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+      \coordinate (A4) at (\LONGCUBO,0,0);
+      \coordinate (B1) at (0,0,\LONGCUBO);
+      \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+      \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+      \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara trasera
+      \coordinate (tra) at ($(A2)!.5!(A4)$);
+      % Punto cara izquierda
+      \coordinate (izda) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (dcha) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Vectores normales a las caras (menos a la de abajo)
+      \def\radius{1.5pt}
+      \def\linewidth{1.1pt}
+      % Vector normal cara izquierda
+      \draw[-{Latex},line width=\linewidth] (izda) -- +(left:3em)
+      node[left] {\scriptsize\scshape (iv)};
+      \filldraw[fill=black,draw=black] (izda) circle[radius=\radius];
+      % Vector normal cara trasera
+      \draw[-{Latex},black,line width=\linewidth] ($(fro)+(0,.1,.1)$) -- ++($(fro)-1.6*(ejex)$)
+      node[right] {\scriptsize\scshape (ii)};
+      \filldraw[fill=black,draw=black] ($(fro)+(0,.1,.1)$) circle[radius=\radius];
+      %\draw[-{Latex},black,line width=\linewidth] (tra) -- ++($(fro)-.85*(ejex)$);
+      %\filldraw[fill=black,draw=black] (tra) circle[radius=\radius];      
+      % Cubo
+      % Cara trasera
+      \filldraw[cara opaca] (A1) -- (A2) -- (A3) -- (A4) -- cycle;
+      % Cara inferior
+      \filldraw[cara opaca] (A1) -- (A4) -- (B4) -- (B1) -- cycle;
+      % Cara izquierda
+      \filldraw[cara opaca] (A1) -- (B1) -- (B2) -- (A2) -- cycle;
+      % Cara derecha
+      \filldraw[cara translucida] (A4) -- (B4) -- (B3) -- (A3) -- cycle;
+      % Cara superior
+      \filldraw[cara translucida] (A2) -- (A3) -- (B3) -- (B2) -- cycle;
+      % Cara frontal
+      \filldraw[cara translucida] (B1) -- (B2) -- (B3) -- (B4) -- cycle;
+      % Vector normal cara derecha
+      \draw[-{Latex},line width=\linewidth] (dcha) -- +(right:3em)
+      node[right] {\scriptsize\scshape (iii)};
+      \filldraw[fill=black,draw=black] (dcha) circle[radius=\radius];
+      % Vector normal cara frontal
+      \draw[-{Latex},black,line width=\linewidth] ($(fro)+(0,.1,.1)$) -- ++($(fro)+.85*(ejex)$)
+      node[above right=-4pt and 6pt] {\scriptsize\scshape (i)};
+      \filldraw[fill=black,draw=black] ($(fro)+(0,.1,.1)$) circle[radius=\radius];
+      %\draw[-{Latex},black,line width=\linewidth] (fro) -- ++($(fro)+.85*(ejex)$);
+      %\filldraw[fill=black,draw=black] (fro) circle[radius=\radius];
+      % Vector normal cara superior
+      \draw[-{Latex},line width=\linewidth] (sup) -- +(up:3em)
+      node[right] {\scriptsize\scshape (v)};
+      \filldraw[fill=black,draw=black] (sup) circle[radius=\radius];
+
+      
+      % Vértices del cubo
+      %\filldraw (A2) circle[radius=1pt] node[above left,black] {\scriptsize $A2$};
+      %\filldraw (A3) circle[radius=1pt] node[above right,black] {\scriptsize $A3$};
+      %\filldraw (A4) circle[radius=1pt] node[above right,black] {\scriptsize $A4$};
+      %\filldraw (B1) circle[radius=1pt] node[left,black] {\scriptsize $B1$};
+      %\filldraw (B2) circle[radius=1pt] node[left,black] {\scriptsize $B2$};
+      %\filldraw (B3) circle[radius=1pt] node[right,black] {\scriptsize $B3$};
+      %\filldraw (B4) circle[radius=1pt] node[right,black] {\scriptsize $B4$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-cubo1}
+  \end{figure}
+
+  \vspace{-1ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-030.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Integral de volumen
+  % --------------------------------------------------------------------------
+\item Calcule la integral de volumen de la función $T=z^2$ sobre el tetraedro
+  de vértices $(0,0,0)$, $(1,0,0)$, $(0,1,0)$ y $(0,0,1)$.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-031.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Gradiente
+  % --------------------------------------------------------------------------
+\item Compruebe el teorema fundamental para gradientes, usando $T=x^2+4xy+2yz^3$,
+  los puntos $\vvv{a} = (0,0,0)$, $\vvv{b} = (1,1,1)$ y los tres caminos representados
+  en la figura~\ref{fig:edcmat-trayectorias1}.
+  \begin{subejercicio}
+  \item $(0,0,0) \longrightarrow (1,0,0)
+    \longrightarrow (1,1,0) \longrightarrow (1,1,1)$
+  \item $(0,0,0) \longrightarrow (0,0,1)
+    \longrightarrow (0,1,1) \longrightarrow (1,1,1).$
+  \item La trayectoria parabólica $z=x^2$; $y=x$.
+  \end{subejercicio}
+  \begin{figure}[ht]
+    \def\scl{.65}
+    %\tdplotsetmaincoords{0}{0}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \pgfmathsetmacro{\LONGCUBO}{1.5}
+    \centering
+    \begin{subfigure}[b]{.2\textwidth}
+    %\centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      eje/.style={->,line width=.6pt,black},
+      trayecto/.style={-{Latex},line width=.8pt,shorten >=1pt},
+      punto/.style={fill=black,draw=black},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCUBO,0);
+      \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+      \coordinate (A4) at (\LONGCUBO,0,0);
+      \coordinate (B1) at (0,0,\LONGCUBO);
+      \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+      \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+      \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara trasera
+      \coordinate (tra) at ($(A2)!.5!(A4)$);
+      % Punto cara izquierda
+      \coordinate (izq) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (der) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Trayectorias
+      \draw[trayecto] (A1) -- (B1);
+      \draw[trayecto] (B1) -- (B4);
+      \draw[trayecto,shorten >=1.7pt] (B4) -- (B3);
+      % Punto
+      \filldraw (B3) circle [radius=2pt];
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \hspace{1em}
+  \begin{subfigure}[b]{.2\textwidth}
+    %\centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      eje/.style={->,line width=.6pt,black},
+      trayecto/.style={-{Latex},line width=.8pt,shorten >=1pt},
+      punto/.style={fill=black,draw=black},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCUBO,0);
+      \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+      \coordinate (A4) at (\LONGCUBO,0,0);
+      \coordinate (B1) at (0,0,\LONGCUBO);
+      \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+      \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+      \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara trasera
+      \coordinate (tra) at ($(A2)!.5!(A4)$);
+      % Punto cara izquierda
+      \coordinate (izq) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (der) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Trayectorias
+      \draw[trayecto] (A1) -- (A2);
+      \draw[trayecto] (A2) -- (A3);
+      \draw[trayecto] (A3) -- (B3);
+      % Punto
+      \filldraw (B3) circle [radius=2pt];
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \hspace{1em}
+  \begin{subfigure}[b]{.2\textwidth}
+    \centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      eje/.style={->,line width=.6pt,black},
+      trayecto/.style={-{Latex},line width=.8pt,shorten >=1pt},
+      punto/.style={fill=black,draw=black},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCUBO,0);
+      \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+      \coordinate (A4) at (\LONGCUBO,0,0);
+      \coordinate (B1) at (0,0,\LONGCUBO);
+      \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+      \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+      \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara trasera
+      \coordinate (tra) at ($(A2)!.5!(A4)$);
+      % Punto cara izquierda
+      \coordinate (izq) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (der) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Trayectorias
+      \draw[trayecto] (A1) parabola (B3);
+      %\draw[trayecto] (A1) -- (A2);
+      %\draw[trayecto] (A2) -- (A3);
+      %\draw[trayecto] (A3) -- (B3);
+      % Punto
+      \filldraw (B3) circle [radius=2pt];
+    \end{tikzpicture}
+    \caption{}
+  \end{subfigure}
+  \caption{}
+  \label{fig:edcmat-trayectorias1}
+\end{figure}
+
+\vspace{-.5ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-032.pdf}
+  % ...........................................................................
+  %\medskip
+  %{\color{gray}
+  %  \hrule
+  %}
+  
+  %   #########################################################################################
+  %   #########################################################################################
+  %   #########################################################################################
+  
+  \clearpage
+  % \phantomsection
+  % \addcontentsline{toc}{subsection}{Hoja 1}
+  %\setcounter{isubsheet}{3}
+  \stepcounter{isubsheet} 
+  
+  % Añade 'Contenidos' al índice pdf.
+  % \bookmark[level=2,dest=section]{Hoja 1}
+  % Nombre de enlace: 'cc1.2'
+  \pdfbookmark[2]{Hoja 5}{mathj05}
+  
+  % --------------------------------------------------------------------------
+  % Teorema de la divergencia
+  % --------------------------------------------------------------------------
+\item Compruebe el teorema de la divergencia para la función
+    $\vvv{v} = (xy) \xhat{x} + (2yz) \xhat{y} + (3zx) \xhat{z}$.
+    Utilice el volumen del cubo de \SI{2}{\metre} de arista de la
+    figura~\ref{fig:edcmat-cubo2}.
+    \vspace{-2ex}
+    \begin{figure}[ht]
+    \def\scl{.65}
+    %\tdplotsetmaincoords{0}{0}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \pgfmathsetmacro{\LONGCUBO}{1.5}
+    \centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      eje/.style={->,line width=.6pt,black},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCUBO,0);
+      \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+      \coordinate (A4) at (\LONGCUBO,0,0);
+      \coordinate (B1) at (0,0,\LONGCUBO);
+      \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+      \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+      \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara trasera
+      \coordinate (tra) at ($(A2)!.5!(A4)$);
+      % Punto cara izquierda
+      \coordinate (izq) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (der) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Cubo
+      % Cara trasera
+      \filldraw[cara opaca] (A1) -- (A2) -- (A3) -- (A4) -- cycle;
+      % Cara inferior
+      \filldraw[cara opaca] (A1) -- (A4) -- (B4) -- (B1) -- cycle;
+      % Cara izquierda
+      \filldraw[cara opaca] (A1) -- (B1) -- (B2) -- (A2) -- cycle;
+      % Cara derecha
+      \filldraw[cara translucida] (A4) -- (B4) -- (B3) -- (A3) -- cycle;
+      % Cara superior
+      \filldraw[cara translucida] (A2) -- (A3) -- (B3) -- (B2) -- cycle;
+      % Cara frontal
+      \filldraw[cara translucida] (B1) -- (B2) -- (B3) -- (B4) -- cycle;
+      % Vértices del cubo
+      %\filldraw (A2) circle[radius=1pt] node[above left,black] {\scriptsize $A2$};
+      %\filldraw (A3) circle[radius=1pt] node[above right,black] {\scriptsize $A3$};
+      %\filldraw (A4) circle[radius=1pt] node[above right,black] {\scriptsize $A4$};
+      %\filldraw (B1) circle[radius=1pt] node[left,black] {\scriptsize $B1$};
+      %\filldraw (B2) circle[radius=1pt] node[left,black] {\scriptsize $B2$};
+      %\filldraw (B3) circle[radius=1pt] node[right,black] {\scriptsize $B3$};
+      %\filldraw (B4) circle[radius=1pt] node[right,black] {\scriptsize $B4$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-cubo2}
+  \end{figure}
+
+  \vspace{-3ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-033.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % Teorema de Stokes
+  % --------------------------------------------------------------------------
+\item Compruebe el teorema de Stokes para la función
+  $\vvv{v} = (xy) \xhat{x} + (2yz) \xhat{y} + (3zx) \xhat{z}$.
+  Utilizando el área triangular sombreada de la figura~\ref{fig:edcmat-triangulo1}.
+  \vspace{-2ex}
+  \begin{figure}[ht]
+    \def\scl{.80}
+    \def\lw{.8pt}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \pgfmathsetmacro{\LONGCATETOS}{1.5}
+    \centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      % tdplot_main_coords,
+      eje/.style={->,line width=.6pt,black},
+      trayecto/.style={-{Latex},line width=\lw,shorten >=1pt},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCATETOS,0);
+      \coordinate (A3) at (\LONGCATETOS,\LONGCATETOS,0);
+      \coordinate (A4) at (\LONGCATETOS,0,0);
+      \coordinate (B1) at (0,0,\LONGCATETOS);
+      \coordinate (B2) at (0,\LONGCATETOS,\LONGCATETOS);
+      \coordinate (B3) at (\LONGCATETOS,\LONGCATETOS,\LONGCATETOS);
+      \coordinate (B4) at (\LONGCATETOS,0,\LONGCATETOS);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara trasera
+      \coordinate (tra) at ($(A2)!.5!(A4)$);
+      % Punto cara izquierda
+      \coordinate (izq) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (der) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Triángulo
+      \filldraw[fill=black!10,draw=black!10] (A2) -- (A1) -- (A4);
+      \path[tips,-{Latex},line width=\lw] (A2) -- ($(A2)!.7!(A1)$);
+      \draw(A2) -- (A1);
+      \path[tips,-{Latex},line width=\lw] (A1) -- ($(A1)!.7!(A4)$);
+      \draw (A1) -- (A4);
+      \path[tips,-{Latex},line width=\lw] (A4) -- ($(A4)!.7!(A2)$);
+      \draw (A4) -- (A2);
+      %
+      \node[below] at (A4) {$2$};
+      \node[left] at (A2) {$2$};
+      
+      %\filldraw (A2) circle[radius=1pt] node[above left,black] {\scriptsize $A2$};
+      %\filldraw (A3) circle[radius=1pt] node[above right,black] {\scriptsize $A3$};
+      %\filldraw (A4) circle[radius=1pt] node[above right,black] {\scriptsize $A4$};
+      %\filldraw (B1) circle[radius=1pt] node[left,black] {\scriptsize $B1$};
+      %\filldraw (B2) circle[radius=1pt] node[left,black] {\scriptsize $B2$};
+      %\filldraw (B3) circle[radius=1pt] node[right,black] {\scriptsize $B3$};
+      %\filldraw (B4) circle[radius=1pt] node[right,black] {\scriptsize $B4$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-triangulo1}
+  \end{figure}
+
+  \vspace{-3ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-034.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item Compruebe que $\int (\vvv{\nabla}\times\vvv{v})\cdot d\vvv{a}$ depende sólo de
+  la línea de contorno, y no de la superficie concreta que se use, usando la función
+  $\vvv{v} = (2xz+3y^2) \xhat{y} + (4yz^2) \xhat{z}$ y la línea de contorno de la
+  figura~\ref{fig:edcmat-linea-contorno1}.
+  e integrando sobre las cinco
+  caras del cubo de la figura~\ref{fig:edcmat-cubo3}. La cara de atrás en el plano $yz$
+  está abierta.
+  \vspace{-2ex}
+  \begin{figure}[ht]
+    \def\scl{.65}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \pgfmathsetmacro{\LONGCUBO}{1.5}
+    \centering
+    \begin{subfigure}[b]{.3\textwidth}
+      \centering
+      \begin{tikzpicture}[%
+        scale=\scl,
+        eje/.style={->,line width=.6pt,black},
+        cubo/.style={line width=.85pt,black},
+        cara opaca/.style={line width=.85,fill=black!2,draw=black},
+        cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+        ]
+        % Coordenadas
+        \coordinate (A1) at (0,0,0);
+        \coordinate (A2) at (0,\LONGCUBO,0);
+        \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+        \coordinate (A4) at (\LONGCUBO,0,0);
+        \coordinate (B1) at (0,0,\LONGCUBO);
+        \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+        \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+        \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+        % Punto central del cubo
+        \coordinate (O) at ($(A1)!.5!(B3)$);
+        % Punto cara trasera
+        \coordinate (tra) at ($(A2)!.5!(A4)$);
+        % Punto cara izquierda
+        \coordinate (izq) at ($(A2)!.5!(B1)$);
+        % Punto cara superior
+        \coordinate (sup) at ($(A2)!.5!(B3)$);
+        % Punto cara derecha
+        \coordinate (der) at ($(A3)!.5!(B4)$);
+        % Punto cara frontal
+        \coordinate (fro) at ($(B2)!.5!(B4)$);
+        % Extremos de los ejes de coordenadas
+        \coordinate (ejex) at (0,0,\LONGEJEX);
+        \coordinate (ejey) at (\LONGEJEY,0,0);
+        \coordinate (ejez) at (0,\LONGEJEZ,0);
+        % Ejes
+        \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+        \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+        \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+        % Cubo
+        % Cara trasera
+        \filldraw[cara opaca] (A1) -- (A2) -- (A3) -- (A4) -- cycle;
+        % Cara inferior
+        % \filldraw[cara opaca] (A1) -- (A4) -- (B4) -- (B1) -- cycle;
+        % Cara izquierda
+        % \filldraw[cara opaca] (A1) -- (B1) -- (B2) -- (A2) -- cycle;
+        % Cara derecha
+        % \filldraw[cara translucida] (A4) -- (B4) -- (B3) -- (A3) -- cycle;
+        % Cara superior
+        % \filldraw[cara translucida] (A2) -- (A3) -- (B3) -- (B2) -- cycle;
+        % Cara frontal
+        % \filldraw[cara translucida] (B1) -- (B2) -- (B3) -- (B4) -- cycle;
+        % Vértices del cubo
+        % \filldraw (A2) circle[radius=1pt] node[above left,black] {\scriptsize $A2$};
+        % \filldraw (A3) circle[radius=1pt] node[above right,black] {\scriptsize $A3$};
+        % \filldraw (A4) circle[radius=1pt] node[above right,black] {\scriptsize $A4$};
+        % \filldraw (B1) circle[radius=1pt] node[left,black] {\scriptsize $B1$};
+        % \filldraw (B2) circle[radius=1pt] node[left,black] {\scriptsize $B2$};
+        % \filldraw (B3) circle[radius=1pt] node[right,black] {\scriptsize $B3$};
+        % \filldraw (B4) circle[radius=1pt] node[right,black] {\scriptsize $B4$};
+      \end{tikzpicture}
+      \caption{}
+      \label{fig:edcmat-linea-contorno1}
+    \end{subfigure}
+    \begin{subfigure}[b]{.3\textwidth}
+      \centering
+    \begin{tikzpicture}[%
+      scale=\scl,
+      %tdplot_main_coords,
+      eje/.style={->,line width=.6pt,black},
+      %cubo/.style={white,double=black,double distance=.1mm,join=bevel,line width=1.2pt},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (A1) at (0,0,0);
+      \coordinate (A2) at (0,\LONGCUBO,0);
+      \coordinate (A3) at (\LONGCUBO,\LONGCUBO,0);
+      \coordinate (A4) at (\LONGCUBO,0,0);
+      \coordinate (B1) at (0,0,\LONGCUBO);
+      \coordinate (B2) at (0,\LONGCUBO,\LONGCUBO);
+      \coordinate (B3) at (\LONGCUBO,\LONGCUBO,\LONGCUBO);
+      \coordinate (B4) at (\LONGCUBO,0,\LONGCUBO);
+      % Punto central del cubo
+      \coordinate (O) at ($(A1)!.5!(B3)$);
+      % Punto cara inferior
+      \coordinate (inf) at ($(A1)!.5!(B4)$);
+      % Punto cara izquierda
+      \coordinate (izda) at ($(A2)!.5!(B1)$);
+      % Punto cara superior
+      \coordinate (sup) at ($(A2)!.5!(B3)$);
+      % Punto cara derecha
+      \coordinate (dcha) at ($(A3)!.5!(B4)$);
+      % Punto cara frontal
+      \coordinate (fro) at ($(B2)!.5!(B4)$);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\LONGEJEX);
+      \coordinate (ejey) at (\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (A1) -- (ejex) node[above left] {$x$};
+      \draw[eje] (A1) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (A1) -- (ejez) node[left=2pt] {$z$};
+      % Vectores normales a las caras (menos a la de abajo)
+      \def\radius{1.5pt}
+      \def\linewidth{1.1pt}
+      % Vector normal cara izquierda
+      \draw[-{Latex},line width=\linewidth] (izda) -- +(left:3em)
+      node[left] {\scriptsize\scshape (iv)};
+      \filldraw[fill=black,draw=black] (izda) circle[radius=\radius];
+      % Vector normal cara inferior
+      %\draw[-{Latex},black,line width=\linewidth] ($(inf)+(0,.1,.1)$) -- ++($(inf)-1.6*(ejez)$)
+      %node[right] {\scriptsize\scshape (ii)};
+      \draw[-{Latex},black,line width=\linewidth] (inf) -- +(down:4em)
+      node[right] {\scriptsize\scshape (ii)};
+      \filldraw[fill=black,draw=black] ($(fro)+(0,.1,.1)$) circle[radius=\radius];
+      %\draw[-{Latex},black,line width=\linewidth] (tra) -- ++($(fro)-.85*(ejex)$);
+      %\filldraw[fill=black,draw=black] (tra) circle[radius=\radius];      
+      % Cubo
+      % Cara trasera
+      \filldraw[cara opaca] (A1) -- (A2) -- (A3) -- (A4) -- cycle;
+      % Cara inferior
+      \filldraw[cara opaca] (A1) -- (A4) -- (B4) -- (B1) -- cycle;
+      % Cara izquierda
+      \filldraw[cara opaca] (A1) -- (B1) -- (B2) -- (A2) -- cycle;
+      % Cara derecha
+      \filldraw[cara translucida] (A4) -- (B4) -- (B3) -- (A3) -- cycle;
+      % Cara superior
+      \filldraw[cara translucida] (A2) -- (A3) -- (B3) -- (B2) -- cycle;
+      % Cara frontal
+      \filldraw[cara translucida] (B1) -- (B2) -- (B3) -- (B4) -- cycle;
+      % Vector normal cara derecha
+      \draw[-{Latex},line width=\linewidth] (dcha) -- +(right:3em)
+      node[right] {\scriptsize\scshape (iii)};
+      \filldraw[fill=black,draw=black] (dcha) circle[radius=\radius];
+      % Vector normal cara frontal
+      \draw[-{Latex},black,line width=\linewidth] ($(fro)+(0,.1,.1)$) -- ++($(fro)+.85*(ejex)$)
+      node[above right=-4pt and 6pt] {\scriptsize\scshape (i)};
+      \filldraw[fill=black,draw=black] ($(fro)+(0,.1,.1)$) circle[radius=\radius];
+      % \draw[-{Latex},black,line width=\linewidth] (fro) -- ++($(fro)+.85*(ejex)$);
+      % \filldraw[fill=black,draw=black] (fro) circle[radius=\radius];
+      % Vector normal cara superior
+      \draw[-{Latex},line width=\linewidth] (sup) -- +(up:3em)
+      node[right] {\scriptsize\scshape (v)};
+      \filldraw[fill=black,draw=black] (sup) circle[radius=\radius];
+      
+      % Vértices del cubo
+      %\filldraw[fill=red,draw=red] (A2) circle[radius=1pt] node[above left,black] {\scriptsize $A2$};
+      %\filldraw[fill=red,draw=red] (A3) circle[radius=1pt] node[above right,black] {\scriptsize $A3$};
+      %\filldraw[fill=red,draw=red] (A4) circle[radius=1pt] node[above right,black] {\scriptsize $A4$};
+      %\filldraw[fill=red,draw=red] (B1) circle[radius=1pt] node[left,black] {\scriptsize $B1$};
+      %\filldraw[fill=red,draw=red] (B2) circle[radius=1pt] node[left,black] {\scriptsize $B2$};
+      %\filldraw[fill=red,draw=red] (B3) circle[radius=1pt] node[right,black] {\scriptsize $B3$};
+      %\filldraw[fill=red,draw=red] (B4) circle[radius=1pt] node[right,black] {\scriptsize $B4$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-cubo3}
+  \end{subfigure}
+  \caption{}
+\end{figure}
+
+\vspace{-3ex}
+% ...........................................................................
+{\footnotesize \textcolor{gray}{[No resuelto]}}
+% \showSolved{res/matematicas}{matematicas-035.pdf}
+% ...........................................................................
+\medskip
+{\color{gray}
+  \hrule
+}
+
+% --------------------------------------------------------------------------
+% 
+% --------------------------------------------------------------------------
+\item Demuestre que
+  \begin{subejercicio}
+  \item
+    \[
+      \int_S f(\vvv{\nabla}\times\vvv{A})\cdot d\vvv{a}
+      = \int_S [\vvv{A}\times (\vvv{\nabla}f)]\cdot d\vvv{a}
+      + \oint_P f\vvv{A}\cdot d\vvv{l}
+    \]
+  \item
+    \[
+      \int_V \vvv{B}\cdot (\vvv{\nabla}\times\vvv{A})\, d\tau
+      = \int_V [\vvv{A}\cdot (\vvv{\nabla}\times\vvv{B})]\, d\tau
+      + \oint_S (\vvv{A}\times\vvv{B})\cdot d\vvv{a}
+    \]    
+  \end{subejercicio}
+
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-036.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+% --------------------------------------------------------------------------
+% 
+% --------------------------------------------------------------------------
+\item Deduzca fórmulas para $r$, $\theta$, $\phi$ en términos de $x$, $y$, $z$,
+  a partir de $x = r\sin\theta\cos\phi$, $y=r\sin\theta\sin\phi$, $z=r\cos\theta$.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-037.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+% --------------------------------------------------------------------------
+% 
+% --------------------------------------------------------------------------
+\item Exprese los vectores unitarios $\xhat{r}$, $\xhat{\theta}$, $\xhat{\phi}$ en términos de
+  $\xhat{x}$, $\xhat{y}$, $\xhat{z}$. Obtenga, además, las expresiones inversas, esto es,
+  los $\xhat{x}$, $\xhat{y}$, $\xhat{z}$, en función de $\xhat{r}$, $\xhat{\theta}$, $\xhat{\phi}$.
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-038.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item
+  \begin{subejercicio}
+  \item Compruebe el teorema de la divergencia para la función $\vvv{v}_1=r^2 \xhat{r}$,
+    usando como volumen una esfera de radio $R$ centrada en el origen.
+  \item Haga lo mismo para $\vvv{v}_2 = (1/r^2)\,\xhat{r}$.
+  \end{subejercicio}
+  
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-039.pdf}
+  % ...........................................................................
+  %\medskip
+  %{\color{gray}
+  %  \hrule
+  %}
+
+  
+  % #########################################################################################
+  % #########################################################################################
+  % #########################################################################################
+  
+  \clearpage
+  \stepcounter{isubsheet} 
+  
+  % Añade 'Contenidos' al índice pdf.
+  \pdfbookmark[2]{Hoja 6}{mathj06}
+  
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item Calcule la divergencia de la función
+  \[
+    \vvv{v} = (r\cos\theta)\,\xhat{r} + (r\sin\theta)\,\xhat{\theta} + (r\sin\theta\cos\phi)\,\xhat{\phi}
+  \]
+  Compruebe el teorema de la divergencia para esta función, usando como volumen el cuenco semiesférico
+  invertido de radio $R$, que descansa en el plano $xy$ y está centrado en el origen.
+  Ver figura~\ref{fig:edcmat-semiesfera1}.
+  \vspace{-2ex}
+  \begin{figure}[ht]
+    \def\scl{1}
+    \def\lw{.8pt}
+    \pgfmathsetmacro{\FACTOR}{.8}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \centering
+   \begin{tikzpicture}[%
+      scale=\scl,
+      % tdplot_main_coords,
+      eje/.style={->,line width=.6pt,black},
+      trayecto/.style={-{Latex},line width=\lw,shorten >=1pt},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (O) at (0,0,0);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\FACTOR*\LONGEJEX);
+      \coordinate (ejey) at (\FACTOR*\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\FACTOR*\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (O) -- (ejex) node[above left] {$x$};
+      \draw[eje] (O) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (O) -- (ejez) node[left=2pt] {$z$};
+      % Elipse
+      \draw[line width=.4pt, black!30] (O) ellipse (.8cm and .25cm);
+      \coordinate (P) at ($(0,0) + (180:.8cm and .25cm)$);
+      \draw[line width=.8pt] ($(0,0) + (0:.8cm and .25cm)$) (P) arc (180:360:.8cm and .25cm);
+      % Semicircunferencia
+      \draw[line width=.8pt] ($(0,0) + (.8cm,0)$) arc (0:180:.8cm);
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-semiesfera1}
+  \end{figure}
+
+  \vspace{-3ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-040.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  % --------------------------------------------------------------------------
+  % 
+  % --------------------------------------------------------------------------
+\item Calcule el gradiente y la laplaciana de la función $T = r(\cos\theta + \sin\theta \cos\phi)$.
+  Compruebe la laplaciana pasando $T$ a coordenadas cartesianas y usando la ecuación
+  \[
+    \nabla^2
+    = \frac{\partial^1 T}{\partial x^2}
+    + \frac{\partial^2 T}{\partial y^2}
+    + \frac{\partial^2 T}{\partial z^2}
+  \]
+  Compruebe el teorema del gradiente para esta función usando el camino mostrado
+  en la figura~\ref{fig:edcmat-camino1}, que va desde $(0,0,0)$ hasta $(0,0,2)$.
+  \vspace{-3ex}
+  \begin{figure}[ht]
+    \def\scl{.8}
+    \def\lw{.8pt}
+    \pgfmathsetmacro{\FACTOR}{.8}
+    \pgfmathsetmacro{\LONGEJEX}{2.6}
+    \pgfmathsetmacro{\LONGEJEY}{2.2}
+    \pgfmathsetmacro{\LONGEJEZ}{2.2}
+    \centering
+   \begin{tikzpicture}[%
+      scale=\scl,
+      % tdplot_main_coords,
+      eje/.style={->,line width=.6pt,black},
+      trayecto/.style={-{Latex},line width=\lw,shorten >=1pt},
+      cubo/.style={line width=.85pt,black},
+      cara opaca/.style={line width=.85,fill=black!2,draw=black},
+      cara translucida/.style={line width=.85,fill=black!2,draw=black,opacity=.75},
+      ]
+      % Coordenadas
+      \coordinate (O) at (0,0,0);
+      \coordinate (X) at (0,0,1);
+      \coordinate (Y) at (1,0,0);
+      \coordinate (Z) at (0,1,0);
+      % Extremos de los ejes de coordenadas
+      \coordinate (ejex) at (0,0,\FACTOR*\LONGEJEX);
+      \coordinate (ejey) at (\FACTOR*\LONGEJEY,0,0);
+      \coordinate (ejez) at (0,\FACTOR*\LONGEJEZ,0);
+      % Ejes
+      \draw[eje] (O) -- (ejex) node[left] {$x$};
+      \draw[eje] (O) -- (ejey) node[below=2pt] {$y$};
+      \draw[eje] (O) -- (ejez) node[left=2pt] {$z$};
+      % 
+      \draw[trayecto] (O) -- (X);
+      \draw[trayecto] (X) arc (270:315:2cm and 1.3cm);
+      \draw[trayecto] (1,0) arc (0:90:1);
+      %
+      \node[above left=-2pt and 0pt] at (X) {\footnotesize $2$};
+      \node[below right=0pt and -2pt] at (Y) {\footnotesize $2$};
+      \node[left] at (Z) {\footnotesize $2$};
+    \end{tikzpicture}
+    \caption{}
+    \label{fig:edcmat-camino1}
+  \end{figure}
+
+  \vspace{-3ex}
+  % ...........................................................................
+  {\footnotesize \textcolor{gray}{[No resuelto]}}
+  % \showSolved{res/matematicas}{matematicas-041.pdf}
+  % ...........................................................................
+  \medskip
+  {\color{gray}
+    \hrule
+  }
+  
+  
+
+
+% $\brcurs$ --> Vector separación.
+% $\rcurs$ --> Módulo del vector separación.
+% $\hrcurs$ --> Vector unitario separación.
+%  $\hrcurs_{1}/\rcurs_{1}^{2}$
+
+\end{ejercicio}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: "../edclasica-ej.tex"
+%%% End:

@@ -1,0 +1,957 @@
+% matematicas-001.tex
+%
+% Copyright (C) 2019-2025 José A. Navarro Ramón <janr.devel@gmail.com>
+
+% ....................................................................
+% OBSERVACIÓN: Se puede dar formato al búffer en AUCTeX con: M-x L-buff RET
+% ....................................................................
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../edclasica-res.pkg}
+\usepackage{../edclasica-res.defs}
+
+% ********************************************************************
+% ******* DEFINICIONES DE ESTE EJERCICIO *****************************
+% ********************************************************************
+% Bloques de ejercicios
+\renewcommand*{\mainsubject}{Análisis Vectorial}
+\renewcommand*{\parte}{EJERCICIOS DE ELECTRODINÁMICA CLÁSICA}
+\renewcommand*{\tipoBloque}{Problema}
+\renewcommand*{\bloque}{1}
+\renewcommand*{\hoja}{1}
+\renewcommand*{\ejBloque}{1}
+% Fuente: examen
+% \renewcommand*{\ejExamen}{1}
+\renewcommand*{\fuente}{Introduction to Electrodynamics - Griffiths - 4th Ed.
+  Exercise 1.1. Page 4.}
+
+% *****************************************************************************
+\directlua{dofile "lua/cartesianas_esfericas.lua"}
+
+\newcommand*{\xcoord}[3]{%
+  \directlua{tex.write(
+    spherical2x(#1,#2,#3))}
+}
+
+\newcommand*{\ycoord}[3]{%
+  \directlua{tex.write(
+    spherical2y(#1,#2,#3))}
+}
+
+\newcommand*{\zcoord}[3]{%
+  \directlua{tex.write(
+    spherical2z(#1,#2,#3))}
+}
+
+\begin{document}
+% ############################ ENUNCIADO ######################################
+% Entrada en el índice del fichero 'pdf' 'enunciado.0'
+\pdfbookmark[0]{Enunciado}{enunciado}
+
+% --------------------------------------------------------------------
+% 
+% --------------------------------------------------------------------
+\begin{qboxshort}
+  Demuestre que los productos escalar y vectorial son distributivos
+usando las definiciones
+  \[ \vvv{A}\cdot \vvv{B} \equiv A B \cos\theta
+  \] y
+  \[ \vvv{A}\prodvec \vvv{B} \equiv A B \sin\theta \,\xhat{n}
+  \] y los diagramas que se necesiten
+  \begin{subejercicio}
+  \item Cuando los tres vectores son coplanares.
+  \item En el caso general.
+  \end{subejercicio}
+\end{qboxshort}
+
+% ######################### RESOLUCIÓN ###############################
+
+% ================ APARTADO a) =======================================
+% Entrada en el índice del fichero 'pdf'
+\pdfbookmark[0]{Apartado a}{a}
+
+\begin{soluc}
+
+\item  
+  Demostraremos las propiedades mediante tres vectores coplanares
+  genéricos $\vvv{a}$, $\vvv{b}$ y $\vvv{c}$ que vemos representados
+  a la izquierda de la figura~\ref{fig:diagrama}. Se han elegido
+  estos vectores para que se pueda seguir fácilmente el razonamiento
+  geométrico, pero valdría cualquier trio de vectores
+  
+  \begin{figure}[ht]
+    \def\scl{1}
+    \def\lngx{4.3}
+    \def\lngy{2.8}
+    \def\anga{60}
+    \def\lnga{1.8}
+    \def\angb{25}
+    \def\lngb{1.5}
+    \def\angc{0}
+    \def\lngc{3.5}
+    \begin{minipage}{0.3\linewidth}
+    \begin{tikzpicture}[scale=\scl]
+      % Coordenadas
+      \coordinate (O) at (0,0);
+      \coordinate (a) at (\anga:\lnga);
+      \coordinate (b) at (\angb:\lngb);
+      \coordinate (c) at (\angc:\lngc);
+      % Eje x
+      \draw[-{Latex}] (O) -- (\lngx,0) coordinate (ex);
+      \node[below] at (ex) {$x$};
+      % Eje y
+      \draw[-{Latex}] (O) -- (0,\lngy) coordinate (ey);
+      \node[left] at (ey) {$y$};
+      % Vector a
+      \draw[-{Latex[round]},ultra thick,] (O) -- (a)
+      node[above] at (a) {$\vvv{a}$};
+      % Vector b
+      \draw[-{Latex[round]},ultra thick] (O) -- (b)
+      node[above] {$\vvv{b}$};
+      % Vector c
+      \draw[-{Latex[round]},ultra thick] (O) -- (c);
+      \node[below] at (c) {$\vvv{c}$};
+    \end{tikzpicture}
+  \end{minipage}
+  \hspace{1em}
+    \begin{minipage}{0.3\linewidth}
+    \begin{tikzpicture}[scale=\scl]
+      % Coordenadas
+      \coordinate (O) at (0,0);
+      \coordinate (a) at (\anga:\lnga);
+      \coordinate (b) at (\angb:\lngb);
+      \coordinate (c) at (\angc:\lngc);
+      % Eje x
+      \draw[-{Latex}] (O) -- (\lngx,0) coordinate (ex);
+      \node[below] at (ex) {$x$};
+      % Eje y
+      \draw[-{Latex}] (O) -- (0,\lngy) coordinate (ey);
+      \node[left] at (ey) {$y$};
+      % Vector a
+      \draw[-{Latex[round]},ultra thick,] (O) -- (a)
+      node[above] at (a) {$\vvv{a}$};
+      % Vector b
+      \draw[-{Latex[round]},ultra thick] (a) -- +(b) coordinate (bpl)
+      node[above] {$\vvv{b}$};
+      % Vector c
+      \draw[-{Latex[round]},ultra thick] (O) -- (c);
+      \node[below] at (c) {$\vvv{c}$};
+      % Líneas guía
+      \draw[black!20,ultra thin] (a) -- (a |- ex);
+      \draw[black!20,ultra thin] (bpl) -- (bpl |- ex);
+      % Vector a+b
+      \draw[-{Latex[round]},ultra thick,red,shorten >=1pt]
+      (O) -- node[sloped,below] {$\vvv{a}+\vvv{b}$} (bpl);
+      % Proyecciones
+      \begin{scope}[line width=3pt]
+        \draw[green!60!black]
+        ($(O) - (0,3pt)$) -- ($(a |- ex)-(0,3pt)$) coordinate (ax);
+        \draw[blue] (ax) -- ($(bpl |- ex)-(0,3pt)$) coordinate (abx);
+        \draw[red] ($(O)-(0,7pt)$) -- ($(bpl |- ex)-(0,7pt)$);
+      \end{scope}
+    \end{tikzpicture}
+  \end{minipage}
+  \hspace{1em}
+    \begin{minipage}{0.3\linewidth}
+    \begin{tikzpicture}[scale=\scl]
+      % Coordenadas
+      \coordinate (O) at (0,0);
+      \coordinate (a) at (\anga:\lnga);
+      \coordinate (b) at (\angb:\lngb);
+      \coordinate (c) at (\angc:\lngc);
+      % Eje x
+      \draw[-{Latex}] (O) -- (\lngx,0) coordinate (ex);
+      \node[below] at (ex) {$x$};
+      % Eje y
+      \draw[-{Latex}] (O) -- (0,\lngy) coordinate (ey);
+      \node[left] at (ey) {$y$};
+      % Vector a
+      \draw[-{Latex[round]},ultra thick,] (O) -- (a)
+      node[above] at (a) {$\vvv{a}$};
+      % Vector b
+      \draw[-{Latex[round]},ultra thick] (a) -- +(b) coordinate (bpl)
+      node[above] {$\vvv{b}$};
+      % Vector c
+      \draw[-{Latex[round]},ultra thick] (O) -- (c);
+      \node[below] at (c) {$\vvv{c}$};
+      % Líneas guía
+      \draw[black!20,ultra thin] (a) -- (a -| ey);
+      \draw[black!20,ultra thin] (bpl) -- (bpl -| ey);
+      % Vector a+b
+      \draw[-{Latex[round]},ultra thick,red,shorten >=1pt]
+      (O) -- node[sloped,below] {$\vvv{a}+\vvv{b}$} (bpl);
+      % Proyecciones
+      \begin{scope}[line width=3pt]
+        \draw[green!60!black]
+           ($(O) - (2pt,0)$) -- ($(a -| ey)-(2pt,0)$) coordinate (ay);
+        \draw[blue] (ay) -- ($(bpl -| ey)-(2pt,0)$) coordinate (aby);
+        \draw[red] ($(O)-(6.5pt,0)$) -- ($(bpl -| ey)-(6.5pt,0)$);
+      \end{scope}
+    \end{tikzpicture}
+  \end{minipage}
+  
+  \caption{En la figura de la izquierda tenemos tres vectores
+    coplanares $\vvv{a}$, $\vvv{b}$ y $\vvv{c}$. En la figura
+    de enmedio se representan sus proyecciones
+    sobre el eje $x$. A la derecha se representan las proyecciones
+    sobre el eje $y$.
+  }
+  \label{fig:diagrama}
+  \end{figure}
+
+  
+% Entrada en el índice del fichero 'pdf'
+\pdfbookmark[1]{Producto escalar en 2D}{a_esc_2D}
+
+\bigskip
+\textbf{Producto escalar en 2D}
+  
+  Según la definición, el producto escalar de dos vectores
+  es igual al módulo de la proyección de uno de ellos sobre el otro,
+  multiplicado por el módulo del otro, siendo $\alpha$ el ángulo que
+  forman los vectores $\vvv{a}$ y $\vvv{c}$.
+  \[
+    \vvv{a}\cdot\vvv{c}
+    =
+    |\vvv{a}|\,|\vvv{c}|\,\cos\alpha
+    = \left(|\vvv{a}|\,\cos\alpha\right)\,|\vvv{c}|
+    = \text{Proy}_{\vvv{c}}(\vvv{a})\,|\vvv{c}|
+  \]
+  Téngase en cuenta que $\text{Proy}_{\vvv{c}} (\vvv{a})$ es un escalar.
+
+  Si el producto escalar es distributivo, se debe cumplir que
+  \begin{equation}\label{eq:escalardistrib}
+    (\vvv{a} + \vvv{b}) \cdot \vvv{c}
+    =
+    \vvv{a}\cdot \vvv{c} + \vvv{b}\cdot \vvv{c}
+  \end{equation}
+
+  Analizamos el miembro de la izquierda de la
+  ecuación~(\ref{eq:escalardistrib})
+  \[
+    (\vvv{a} + \vvv{b})\cdot \vvv{c}
+    = |\vvv{a} + \vvv{b}|\,|\vvv{c}|\,\cos\theta
+    = \text{Proy}_{\vvv{c}}(\vvv{a}+\vvv{b}) \,\,\|\vvv{c}|
+  \]
+  donde la proyección de la suma de los vectores $\vvv{a} + \vvv{b}$
+  está representada en rojo en el centro de la figura.
+  
+  Ahora desarrollamos el miembro de la derecha
+  \begin{align*}
+    \vvv{a}\cdot\vvv{c} + \vvv{b}\cdot\vvv{c}
+    &=
+    |\vvv{a}|\,|\vvv{c}|\,\cos\alpha
+    +
+    |\vvv{b}|\,|\vvv{c}|\,\cos\beta
+    =
+    \text{Proy}_{\vvv{c}} (\vvv{a}) \,\,|\vvv{c}|
+    +
+    \text{Proy}_{\vvv{c}} (\vvv{b}) \,\,|\vvv{c}|
+    \\&=
+   (\text{Proy}_{\vvv{c}}(\vvv{a})+\text{Proy}_{\vvv{c}})\,\,|\vvv{c}|
+   \\ &=
+   (\text{Proy}_{\vvv{c}}(\vvv{a}) + \text{Proy}_{\vvv{c}}(\vvv{b}))
+   \,|\vvv{c}|
+  \end{align*}
+  Las proyecciones de $\vvv{a}$ y de $\vvv{b}$ sobre $\vvv{c}$
+  se representan en verde y en azul, respectivamente, en el
+  centro de la figura.
+
+  En la misma figura se ve que los dos miembros son iguales, por lo
+  que se demuestra geométricamente que el producto escalar tiene
+  la propiedad distributiva (al menos cuando los vectores implicados
+  son coplanarios).
+
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[1]{Producto vectorial en 2D}{a_vect_2D}
+  
+  \bigskip
+  \textbf{Producto vectorial en 2D}
+  
+  Según la definición, el producto vectorial de dos vectores
+  es igual a un vector perpendicular a ambos vectores indicado
+  por el vector normal $\xhat{n}$, cuyo módulo
+  es igual al producto de los módulos de los vectores, multiplicado
+  por el seno del ángulo $\alpha$ formado por los vectores
+  \[
+    \vvv{a}\prodvec\vvv{c}
+    =
+    |\vvv{a}|\,|\vvv{c}|\,\sin\alpha\,\xhat{n}
+  \]
+    
+  Si el producto vectorial es distributivo, se debe cumplir que
+  \begin{equation}\label{eq:vectorialdistrib}
+    (\vvv{a} + \vvv{b}) \prodvec \vvv{c}
+    =
+    \vvv{a}\prodvec\vvv{c} + \vvv{b}\prodvec\vvv{c}
+  \end{equation}
+
+  Analizamos el miembro de la izquierda de la
+  ecuación~(\ref{eq:vectorialdistrib})
+  \[
+    (\vvv{a} + \vvv{b})\prodvec \vvv{c}
+    = |\vvv{a} + \vvv{b}|\,|\vvv{c}|\,\sin\theta\,\xhat{n}
+    = (|\vvv{a} + \vvv{b}|)\,\sin\theta\,\xhat{n}
+  \]
+  donde $(|\vvv{a} + \vvv{b}|)\,\sin\theta$ está representado en rojo
+  a la derecha de la figura~\ref{fig:diagrama}.
+  
+  Ahora desarrollamos el miembro de la derecha de la igualdad
+  \begin{align*}
+    \vvv{a}\prodvec\vvv{c} + \vvv{b}\prodvec\vvv{c}
+    &=
+    |\vvv{a}|\,|\vvv{c}|\,\sin\alpha\,\xhat{n}
+    +
+      |\vvv{b}|\,|\vvv{c}|\,\sin\beta\,\xhat{n}
+    =
+    (|\vvv{a}|\,\sin\alpha + |\vvv{b}|\,\sin\beta)\,|\vvv{c}|\,\xhat{n}
+  \end{align*}
+  El primer sumando del paréntesis $|\vvv{a}|\,\sin\alpha$ se representa
+  en verde a la derecha de la figura. El segundo sumando
+  $|\vvv{a}|\,\cos\beta$ aparece en verde. En esa figura se aprecia
+  que la suma de estos dos términos es igual al correspondiente del
+  primer miembre, por lo que queda demostrada la propiedad distributiva
+  del producto vectorial, al menos cuando los tres vectores son
+  coplanarios.
+
+% ================ APARTADO b) =======================================
+% Entrada en el índice del fichero 'pdf'
+\pdfbookmark[0]{Apartado b}{b}
+
+\item
+  En este apartado demostraremos la propiedad distributiva del producto escalar
+  y del vectorial para vectores en tres dimensiones.
+
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[1]{Producto escalar 3D}{b-prod-escalar-3D}
+
+  
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[2]{Conceptos básicos}{b-conceptos-basicos}
+  
+  \bigskip
+  \textbf{Conceptos básicos}
+
+   Antes de empezar las demostraciones vamos a demostrar algunas
+  propiedades útiles de los vectores
+
+  \begin{itemize}
+  \item Cosenos directores
+    
+  \begin{figure}[ht]
+  \begin{minipage}{.40\linewidth}
+    \def\scl{4}
+    %\tdplotsetmaincoords{70}{110}
+    \tdplotsetmaincoords{70}{110}
+    % 
+    \pgfmathsetmacro{\rvec}{1.0}
+    \pgfmathsetmacro{\thetavec}{30}
+    \pgfmathsetmacro{\phivec}{50}
+    %
+    \pgfmathsetmacro{\xvec}{\xcoord{\rvec}{\thetavec}{\phivec}}
+    \pgfmathsetmacro{\yvec}{\ycoord{1.0}{30}{50}}
+    \pgfmathsetmacro{\zvec}{\zcoord{1.0}{30}{50}}
+
+    \begin{tikzpicture}[scale=\scl,tdplot_main_coords,font=\normalsize]
+      \coordinate (O) at (0,0,0);
+      \draw[thick,->] (0,0,0) -- (1.3,0,0) node[anchor=north east]{$x$};
+      \draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+      \draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+      \tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+      \tdplotsetthetaplanecoords{\phivec}
+      \tdplotdrawarc[tdplot_rotated_coords]{(0,0,0)}{0.4}{0}%
+      {\thetavec}{above right=0pt and -3pt}{$\gamma$}
+
+      \tdplotdefinepoints(0,0,0)(\xvec,\yvec,\zvec)(1,0,0);
+      \tdplotdrawpolytopearc[thick]{.3}{anchor=south east}{$\alpha$}
+
+      \tdplotdefinepoints(0,0,0)(\xvec,\yvec,\zvec)(0,1,0);
+      \tdplotdrawpolytopearc[thick]{.15}{anchor=south west}{$\beta$}
+
+      \draw[-{stealth},color=red,ultra thick] (O) -- (P)
+      node[above] {$\vvv{v}$};
+      
+    \end{tikzpicture}
+  \caption{La suma de los cuadrados de los cosenos de los ángulos, $\alpha$,
+    $\beta$ y $\gamma$, que forma un vector cualquiera con los ejes de
+    coordenadas es la unidad.}
+  \label{fig:cosenosdirectores}
+\end{minipage}
+\begin{minipage}{.60\linewidth}
+  Un vector cualquiera $\vvv{v}$ se puede representar en el espacio euclídeo
+  de tres dimensiones mediante sus tres componentes cartesianas, que son
+  el producto de su módulo por el coseno del ángulo, $\alpha$, $\beta$ o
+  $\gamma$, que forma el vector con cada uno de los ejes
+  \begin{align*}
+    \vvv{v}
+    &= v_{x}\, \xhat{i} + v_{y}\, \xhat{j} + v_{z}\, \xhat{k}
+    = |\vvv{v}|\cos\alpha\, \xhat{i}
+    + |\vvv{v}|\cos\beta\, \xhat{j}
+    + |\vvv{v}|\cos\gamma\, \xhat{k}\\
+    &= |\vvv{v}|\,(\cos\alpha\,\xhat{i}+\cos\beta\,\xhat{j}+\cos\gamma\,\xhat{k})
+  \end{align*}
+  
+    Pero un vector cualquiera $\vvv{v}$ se puede representar también como el producto de
+    su módulo por el vector unidad $\vvv{u}_{\vvv{v}}$ con la misma dirección y sentido que el vector considerado
+    \[
+      \vvv{v} = |\vvv{v}|\,\xhat{u}_{\vvv{v}}
+    \]
+
+    De lo anterior deducimos que el vector unidad con la misma dirección y
+    sentido que $\vvv{v}$ es
+    \[
+      \xhat{u}_{v}
+      = \cos\alpha\,\xhat{i} + \cos\beta\,\xhat{j} + \cos\gamma\,\xhat{k}
+    \]    
+    
+  \end{minipage}
+\end{figure}
+  
+Como $\xhat{u}_{v}$ es un vector unidad, la suma de de los cuadrados
+de sus componentes debe valer la unidad
+    \[
+       \cos^{2}\alpha + \cos^{2}\beta + \cos^{2}\gamma = 1
+    \]
+
+    Los cosenos de los ángulos que forma un vector $\vvv{v}$ con los ejes
+    de coordenadas se denominan \emph{cosenos directores} y son las
+    componentes cartesianas del vector unidad que tiene la misma
+    dirección y sentido que $\vvv{v}$.
+
+  \item Producto escalar de los vectores unidad en los ejes cartesianos
+
+    Multiplicaremos entre sí los vectores unidad en los ejes de
+    coordenadas cartesianas, $\xhat{\i}$, $\xhat{\j}$ y $\xhat{k}$.
+    El producto de dos diferentes vectores unidad da cero, por ejemplo
+    \[
+      \xhat{\i}\cdot\xhat{\j}
+      =
+      |\xhat{\i}|\,|\xhat{\j}|\,cos(\pi/2) = 0
+    \]
+
+    En cambio el producto escalar de uno de ellos por sí mismo da
+    la unidad, como
+    \[
+      \xhat{\i}\cdot\xhat{\i}
+      =
+      |\xhat{\i}|\,|\xhat{\i}|\,cos\ang{0} = 1
+    \]
+
+    Para resumir el resultado de estas multiplicaciones representaremos
+    cada eje de coordenadas por el ordinal, $
+    1,2,3$ y los vectores
+    unidad correspondientes como $\xhat{u}_{1}$, $\xhat{u}_{2}$ y
+    $\xhat{u}_{3}$. Así
+    \[
+      \xhat{u}_{k}\cdot\xhat{u}_{l}
+      =
+      \delta_{kl}
+    \]
+    donde la delta de Kronecker, $\delta_{kl}$ vale uno si los índices
+    $k$ y $l$ son iguales y cero en caso contrario.
+
+  \item Producto escalar en función de las componentes
+
+    Multipliquemos escalarmente los vectores $\vvv{a}$ y $\vvv{b}$
+    \begin{equation}\label{eq:prod-escalar-componentes}
+      \vvv{a}\cdot\vvv{b}
+      =
+      \left(\sum_{k=1}^{3}a_{k}\,\xhat{u}_{k}\right)
+      \cdot
+      \left(\sum_{k=1}^{3}a_{k}\,\xhat{u}_{k}\right)
+      =
+      \sum_{k=1}^{3}\sum_{l=1}^{3} a_{k}\,b_{l}\,\xhat{u}_{k}\cdot\xhat{u}_{k}
+      =
+      \sum_{k=1}^{3}\sum_{l=1}^{3} a_{k}\,b_{l}\,\delta_{kl}
+      =
+      \sum_{k=1}^{3} a_{k} b_{k}
+    \end{equation}
+    Este método para calcular el producto escalar de dos vectores suele
+    ser muy útil en algunas ocasiones.
+
+  \item Coseno del ángulo formado por dos vectores
+
+    Representaremos el ángulo que forma el vector $\vvv{a}$ con el eje
+    $k$ por $\alpha_{ak}$ y el coseno director correspondiente por
+    $\cos\alpha_{ak}$
+    \[
+      \vvv{a}\cdot\vvv{b}
+      =
+      \sum_{k=1}^{3} a_{k} b_{k}
+      =
+      \sum_{k=1}^{3} |\vvv{a}|\,\cos\alpha_{ak}|\vvv{b}|\,\cos\alpha_{bk}
+      =
+      |\vvv{a}|\,|\vvv{b}|\,\sum_{k=1}^{3} \cos\alpha_{ak}\,\cos\alpha_{bk}
+      =
+      |\vvv{a}|\,|\vvv{b}|\,\cos\alpha_{ab}
+    \]
+
+    De aquí se deduce que el coseno del ángulo que forman $\vvv{a}$ y
+    $\vvv{b}$, $\alpha_{ab}$, es
+    \begin{equation}\label{eq:angulo-dos-vectores}
+      \cos\alpha_{ab}
+      =
+      \sum_{k=1}^{3} \cos\alpha_{ak}\,\cos\alpha_{bk}
+    \end{equation}
+
+  \end{itemize}
+
+  Ahora demostraremos la propiedad distributiva del producto escalar,
+  ecuación~(\ref{eq:escalardistrib}) de dos formas diferentes
+
+  \[
+    (\vvv{a}+\vvv{b})\cdot\vvv{c}
+    =
+    \vvv{a}\cdot\vvv{c} + \vvv{b}\cdot\vvv{c}
+  \]
+
+  
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[2]{Producto escalar en 3D - I}{b-prod-escalar-I}
+  
+  \bigskip
+  \textbf{Producto escalar en 3D - I}
+ 
+  \[
+    (\vvv{a} + \vvv{b})\cdot \vvv{c}
+    =
+    \left(\sum_{k=1}^{3} (a_{k} + b_{k})\,\xhat{u}_{k}\right)
+    \cdot\sum_{l=1}^{3} c_{l}\,\xhat{u}_{l}
+    =
+    \sum_{k=1}^{3} (a_{k}+b_{k})\,c_{k}
+    =
+    \sum_{k=1}^{3} a_{k}\,c_{k}
+    +
+    \sum_{k=1}^{3} b_{k}\,c_{k}
+    =
+    \vvv{a}\cdot\vvv{c}
+    +
+    \vvv{b}\cdot\vvv{c}
+  \]
+  Se ha llegado a esta conclusión porque los $a_{k}$, $b_{k}$ y $c_{k}$ son números
+  reales y la suma y el producto son las operaciones conocidas sobre números
+  reales, cumplen la propiedad distributiva.
+
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[2]{Producto escalar en 3D - II}{b-prod-escalar-II}
+  
+  \bigskip
+  \textbf{Producto escalar en 3D - II}
+  
+  Supongamos tres vectores $\vvv{a}$, $\vvv{b}$ y $\vvv{c}$
+  en el espacio, no nulos. Elegimos los ejes cartesianos $x$, $y$
+  y $z$ de manera que uno de los ejes, por ejemplo el eje $x$,
+  coincida con el vector $\vvv{c}$.
+  Los otros dos vectores, $\vvv{a}$ y $\vvv{b}$, podrán tener cualquier
+  dirección y sentido en el espacio.
+  \begin{align*}
+    \vvv{a}
+    &=
+    |\vvv{a}|\,
+      (\cos\alpha_{1}\,\xhat{i}
+      +\cos\beta_{1}\,\xhat{j}
+      +\cos\gamma_{1}\,\xhat{k})\\
+    \vvv{b}
+    &=
+    |\vvv{b}|\,
+      (\cos\alpha_{2}\,\xhat{i}
+      +\cos\beta_{2}\,\xhat{j}
+      +\cos\gamma_{2}\,\xhat{k})\\
+    \vvv{c}
+    &=
+      |\vvv{c}|\,\cos\alpha_{3}\,\xhat{i}
+  \end{align*}
+
+ \begin{align*}
+    \vvv{a}+\vvv{b}
+    &=
+      |\vvv{a}|
+      (\cos\alpha_{1}\,\xhat{i}
+      +\cos\beta_{1}\,\xhat{j}
+      +\cos\gamma_{1}\,\xhat{k})
+      +
+      |\vvv{b}|\,
+      (\cos\alpha_{2}\,\xhat{i}
+      +\cos\beta_{2}\,\xhat{j}
+      +\cos\gamma_{2}\,\xhat{k})\\
+    &=
+      (|\vvv{a}|\,\cos\alpha_{1} + |\vvv{b}|\,\cos\alpha_{2})\,\xhat{i}
+      +
+      (|\vvv{a}|\,\cos\beta_{1} + |\vvv{b}|\,\cos\beta_{2})\,\xhat{j}
+      +
+      (|\vvv{a}|\,\cos\gamma_{1} + |\vvv{b}|\,\cos\gamma_{2})\,\xhat{k}\\
+    &=
+      |\vvv{a}+\vvv{b}|\,\left[
+      \left(
+        \frac{|\vvv{a}|\,\cos\alpha_{1} + |\vvv{b}|\,\cos\alpha_{2}}
+             {|\vvv{a}+\vvv{b}|}
+      \right)\,\xhat{i}
+      +
+      \left(
+        \frac{|\vvv{a}|\,\cos\beta_{1} + |\vvv{b}|\,\cos\beta_{2}}
+             {|\vvv{a}+\vvv{b}|}
+      \right)\,\xhat{j}
+      +
+      \left(
+        \frac{|\vvv{a}|\,\cos\gamma_{1} + |\vvv{b}|\,\cos\gamma_{2}}
+             {|\vvv{a}+\vvv{b}|}
+      \right)\,\xhat{k}
+      \right]\\
+    &=
+      |\vvv{a}+\vvv{b}|\,
+      (\cos\alpha_{s}\,\xhat{i}
+      +
+      \cos\beta_{s}\,\xhat{j}
+      +
+      \cos\gamma_{s}\,\xhat{k})
+ \end{align*}
+ donde $\cos\alpha_{s}$, $\cos\beta_{s}$ y $\cos\gamma_{s}$ son los
+ cosenos directores de los ángulos del vector suma $\vvv{a}+\vvv{b}$
+ con los ejes de coordenadas.
+ 
+ Calculamos por separado cada término teniendo en cuenta que el
+ ángulo que forma $\vvv{a}$ con $\vvv{c}$ es el ángulo que forma
+ con el eje $x$, $\alpha_{1}$ y $\vvv{b}$ forma un ángulo $\alpha_{2}$
+ con $\vvv{c}$
+ \begin{align*}
+   \vvv{a}\cdot\vvv{c}
+   &=
+   |\vvv{a}|\,|\vvv{c}|\,\cos\alpha_{1}\\
+   \vvv{b}\cdot\vvv{c}
+   &=
+   |\vvv{b}|\,|\vvv{c}|\,\cos\alpha_{2}
+ \end{align*}
+
+ El primer término de la propiedad distributiva es
+ \begin{align*}
+    (\vvv{a}+\vvv{b})\cdot\vvv{c}
+    &=
+      \cancelout{|\vvv{a}+\vvv{b}|}\,|\vvv{c}|\,
+      \frac{|\vvv{a}|\,\cos\alpha_{1}+|\vvv{b}|\,\cos\alpha_{2}}
+      {\cancelout{|\vvv{a} + \vvv{b}|}}
+    =
+      |\vvv{c}|\,(|\vvv{a}|\,\cos\alpha_{1}+|\vvv{b}|\,\cos\alpha_{2})  
+  \end{align*}
+
+  El segundo término es igual al primero
+  \[
+    \vvv{a}\cdot\vvv{c} + \vvv{b}\cdot\vvv{c}
+    =
+    |\vvv{a}|\,|\vvv{c}|\,\cos\alpha_{1}+|\vvv{b}|\,|\vvv{c}|\,\cos\alpha_{2}
+    =
+    |\vvv{c}|\,(|\vvv{a}|\,\cos\alpha_{1}+|\vvv{b}\,\cos\alpha_{2})
+  \]
+
+  Queda demostrada la propiedad distributiva para el producto escalar.
+
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[1]{Producto vectorial 3D}{b-prod-vect-3D}
+  
+  \bigskip
+  \textbf{Producto vectorial 3D}
+  
+  Ahora demostraremos la propiedad distributiva del producto vectorial,
+  ecuación~(\ref{eq:vectorialdistrib})
+
+  \[
+    (\vvv{a}+\vvv{b})\prodvec\vvv{c}
+    =
+    \vvv{a}\prodvec\vvv{c} + \vvv{b}\prodvec\vvv{c}
+  \]
+
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[2]{Conceptos básicos}{b-conceptos-basicos-vect}
+  
+  \bigskip
+  \textbf{Conceptos básicos}
+
+  \begin{itemize}
+  \item Definición de producto vectorial
+
+    El producto vectorial $\vvv{a}\prodvec\vvv{b}$ se puede definir mediante
+    las siguientes proposiciones
+    \begin{enumerate}
+    \item El producto vectorial de dos vectores $\vvv{a}$ y $\vvv{b}$ es un vector
+      perpendicular a ambos vectores.
+    \item Hay dos posibles sentidos para el vector perpendicular. Se elige
+      el sentido dado por la mano derecha
+      \begin{quote}
+        Se hace coincidir el vector $\vvv{a}$ con el índice,
+        el vector $\vvv{b}$ con el dedo medio. El sentido
+        del vector producto vectorial será el que indique el pulgar.
+      \end{quote}
+    \item El módulo del producto vectorial es el producto de los módulos de los
+      dos vectores multiplicado por el seno del ángulo agudo o llano formado por
+      los vectores
+      \[
+        \vvv{a}\prodvec\vvv{b}
+        =
+        |\vvv{a}|\,|\vvv{b}|\,\sin\alpha_{ab}
+      \]
+    \end{enumerate}
+
+  \item El módulo del producto vectorial es igual al área del paralelepípedo
+    formado por los vectores
+    \begin{figure}[ht]
+      \begin{minipage}{.45\linewidth}
+      \def\scl{1}
+      \def\alen{4}
+      \def\aang{0}
+      \def\blen{3}
+      \def\bang{40}
+      \def\vectwidth{1.6pt}
+      \begin{tikzpicture}[scale=\scl]
+        % Coordenadas más relevantes O, A, B, h, O'
+        \coordinate (O) at (0,0);
+        \coordinate (A) at (\aang:\alen);
+        \coordinate (B) at (\bang:\blen);
+        \coordinate (h) at  (B |- A);
+        \path (B) -- ++(\aang:\alen) coordinate (op);
+
+        % Relleno de triángulo
+        \filldraw[fill=black!15] (O) -- (A) -- (B) -- cycle;
+        
+        % Líneas auxiliares
+        % B -- O' -- A -- B
+        \draw[black!50] (B) -- (op) -- (A) -- cycle;
+        % altura
+        \draw[red!50,ultra thin] (B) -- node[right,black] {$h$} (h);
+        
+        % Etiquetas de vértices
+        \node[below left] at (O) {$O$};
+        \node[below] at (A) {$A$};
+        \node[above] at (B) {$B$};
+        \node[right] at (op) {$O'$};
+        \node[below] at (h) {$H$};
+
+        % Vectores
+        \draw[-{Latex[round]},line width=\vectwidth,name path=line a] (O) -- (A);
+        \draw[-{Latex[round]},line width=\vectwidth,name path=line b] (O) -- (B);
+
+      \end{tikzpicture}
+      \caption{Construcción para demostrar que el módulo del producto
+        vectorial de dos vectores es igual al área del paralelepípedo
+        generado por los vectores.}
+      \label{fig:area-paralelepipedo}
+    \end{minipage}
+    \hspace{1em}
+    \begin{minipage}{.50\linewidth}
+      El módulo del producto vectorial de los vectores $\vvv{a}$ y $\vvv{b}$,
+      representados por los segmentos dirigidos $OA$ y $OB$, vale
+      \begin{align*}
+        |\vvv{a}\prodvec\vvv{b}|
+        &=
+        |\vvv{a}|\,|\vvv{b}|\,\sin\alpha
+        =
+        OA\,h
+        =
+        2\,\frac{OA\,h}{2}\\
+        &=
+        2\,\text{área del triángulo } AOB\\
+        &=
+        \text{área del parelelepípedo } OAO'B
+      \end{align*}
+
+      Donde $|\vvv{b}|\,\sin\alpha$ es el la altura $h$ del triángulo $AOB$ y
+      $OA$ es la base del triángulo.
+    \end{minipage}
+    \end{figure}
+
+    \item El producto vectorial expresado como determinante
+
+    Sabemos por la proposición 1 en la definición del producto vectorial
+    que el vector resultante $\vvv{c}=\vvv{a}\prodvec\vvv{b}$ del producto
+    vectorial de dos vectores $\vvv{a}$ y $\vvv{b}$ es perpendicular a ambos.
+    Por tanto el producto escalar de estos vectores es cero
+    \begin{align*}
+      \vvv{a}\cdot\vvv{c} &= 0\\
+      \vvv{b}\cdot\vvv{c} &= 0
+    \end{align*}
+
+    Desarrollando el producto escalar por componentes porque estamos interesados
+    en las componentes $c_{1}$, $c_{2}$ y $c_{3}$
+    \begin{align*}
+      a_{1} c_{1} + a_{2} c_{2} + a_{3} c_{3} &= 0\\
+      b_{1} c_{1} + b_{2} c_{2} + b_{3} c_{3} &= 0
+    \end{align*}
+
+    Tenemos dos ecuaciones con tres incógnitas, por lo que tendremos que
+    añadir más adelante otra condición para obtener las componentes del producto
+    vectorial.
+
+    Obtenemos las siguientes relaciones y llamaremos $K$ a la proporción
+    \[
+      \frac{c_{1}}{a_{2}b_{3}-a_{3}b_{2}}
+      =
+      \frac{c_{2}}{a_{3}b_{1}-a_{1}b_{3}}
+      =
+      \frac{c_{3}}{a_{1}b_{2}-a_{2}b_{1}}
+      =
+      K
+    \]
+
+    Despejamos las componentes del producto vectorial en función de $K$
+    \begin{align*}
+      c_{1} &= K(a_{2}b_{3} - a_{3}b_{2})\\
+      c_{2} &= K(a_{3}b_{1} - a_{1}b_{3})\\
+      c_{3} &= K(a_{1}b_{2} - a_{2}b_{1})
+    \end{align*}
+
+    El cuadrado del producto vectorial es $c^{2} = c_{1}^{2} + c_{2}^{2} + c_{3}^{2}$
+    \begin{align*}
+      c^{2}
+      &=
+        K^{2}\left[
+          (a_{2}b_{3})^{2} + (a_{3}b_{1}-a_{1}b_{3})^{2} + (a_{1}b_{2}-a_{2}b_{1})^{2}
+        \right]\\
+      &=
+        K^{2}\left[
+        a_{2}^{2}b_{3}^{2} + a_{3}^{2}b_{2}^{2} - 2a_{2}a_{3}b_{2}b_{3}
+        + a_{3}^{2}b_{1}^{2}+a_{1}^{2}b_{3}^{2} - 2a_{1}a_{3}b_{1}b_{3}
+        + a_{1}^{2}b_{2}^{2}+a_{2}^{2}b_{1}^{2} - 2a_{1}a_{2}b_{1}b_{2}
+        \right]\\
+      &=K^{2}\left[
+        a_{1}^{2}\left(b_{2}^{2} + b_{3}^{2}\right)
+        + a_{2}^{2}\left(b_{1}^{2} + b_{3}^{2}\right)
+        + a_{3}^{2}\left(b_{1}^{2} + b_{2}^{2}\right)
+        - 2 (a_{1}a_{2}b_{1}b_{2} + a_{2}a_{3}b_{2}b_{3} + a_{1}a_{3}b_{1}b_{3})
+        \right]
+    \end{align*}
+
+    Como $b^{2} = b_{1}^{2} + b_{2}^{2} + b_{3}^{2}$
+    \begin{align*}
+      b_{2}^{2} + b_{3}^{2} &= b^{2}-b_{1}^{2}\\
+      b_{1}^{2} + b_{3}^{2} &= b^{2}-b_{2}^{2}\\
+      b_{1}^{2} + b_{2}^{2} &= b^{2}-b_{3}^{2}\\
+    \end{align*}
+
+    Sustituimos en la expresión del cuadrado del producto vectorial
+    \begin{align*}
+      c^{2}
+      &=
+        K^{2}\left[
+        a_{1}^{2}\left(b^{2} - b_{1}^{2}\right)
+        + a_{2}^{2}\left(b^{2} - b_{2}^{2}\right)
+        + a_{3}^{2}\left(b^{2} - b_{3}^{2}\right)
+        - 2 (a_{1}a_{2}b_{1}b_{2} + a_{2}a_{3}b_{2}b_{3} + a_{1}a_{3}b_{1}b_{3})
+        \right]\\
+      &=
+        K^{2}\left[
+        b^{2}\left(a_{1}^{2} + a_{2}^{2} + a_{3}^{2}\right)
+        - a_{1}^{2}b_{1}^{2} - a_{2}^{2}b_{2}^{2} - a_{3}^{2}b_{3}^{2}
+        - 2 (a_{1}a_{2}b_{1}b_{2} + a_{2}a_{3}b_{2}b_{3} + a_{1}a_{3}b_{1}b_{3})
+        \right]\\
+      &=
+        K^{2}\left[
+          b^{2}a^{2} - (a_{1}b_{1} + a_{2}b_{2} + a_{3}b_{3})^{2}
+        \right]
+        =
+        K^{2}\left[
+          a^{2}b^{2} - (a b \cos\alpha_{ab})^{2}
+        \right]\\
+      &=
+        K^{2}\left[
+          a^{2}b^{2} - a^{2}b^{2}\cos^{2}\alpha_{ab}
+        \right]
+        =
+        K^{2} a^{2} b^{2} \left(1-\cos^{2}\alpha_{ab}\right)\\
+      &=
+        K^{2} a^{2} b^{2} \sin^{2}\alpha_{ab}
+    \end{align*}
+
+    Entonces
+    \[
+      c = \pm |K| a b \sin\alpha_{ab}
+    \]
+
+    Según la definición de producto vectorial deducimos que $|K| = 1$.
+    Sólo nos queda determinar el signo de $K$. Para obtenerlo nos fijamos
+    en el segundo punto de la definición de producto vectorial.
+
+    Calcularemos un producto vectorial sencillo, como
+    $\xhat{u}_{1}\prodvec\xhat{u}_{2}$ para aplicar la regla de la mano derecha
+    y determinar el signo de $K$. Aplicando dicha regla obtenemos
+    \[
+      \xhat{u}_{1}\prodvec\xhat{u}_{2}
+      =
+      1\cdot 1\sin\ang{90}\,\xhat{u}_{3} = 1\,\xhat{u}_{3} = \xhat{u}_{3}
+    \]
+    
+    \begin{align*}
+      \xhat{u}_{1} &= (a_{1}, a_{2}, a_{3}) = (1, 0, 0)\\
+      \xhat{u}_{2} &= (b_{1}, b_{2}, b_{3}) = (0, 1, 0)\\
+      \xhat{u}_{3} &= (c_{1}, c_{2}, c_{3}) = (0, 0, 1)
+    \end{align*}
+
+    Para que se obtenga el resultado con el producto vectorial sencillo debemos
+    hacer que $K$ sea positivo ($K = +1$)
+    \begin{align*}
+      c_{1} &= 1\,(0\cdot 0 - 0\cdot 1) = 0\\
+      c_{2} &= 1\,(0\cdot 0 - 1\cdot 0) = 0\\
+      c_{3} &= 1\,(1\cdot 1 - 0\cdot 0) = 1
+    \end{align*}
+
+    Así, las componentes serán
+    \begin{align*}
+      c_{1} &= a_{2}b_{3} - a_{3}b_{2}\\
+      c_{2} &= a_{3}b_{1} - a_{1}b_{3}\\
+      c_{3} &= a_{1}b_{2} - a_{2}b_{1}
+    \end{align*}
+
+    Estas componentes se pueden obtener representando el producto vectorial
+    como un determinante
+    \begin{equation}\label{eq:prod-vectorial-determinante}
+      \vvv{a}\prodvec\vvv{b}
+      =
+      \begin{vmatrix}
+        \xhat{u}_{1} & \xhat{u}_{2} & \xhat{u}_{3}\\
+        a_{1} & a_{2} & a_{3}\\
+        b_{1} & b_{2} & b_{3}
+      \end{vmatrix}
+    \end{equation}
+  \end{itemize}
+
+  % Entrada en el índice del fichero 'pdf'
+  \pdfbookmark[2]{Producto vectorial en 3D}{b-prod-vectorial}
+  
+  \bigskip
+  \textbf{Producto vectorial en 3D}
+  
+  Demostraremos la propiedad distributiva aprovechando la linealidad de los
+  determinantes
+  \begin{align*}
+    (\vvv{a}+\vvv{b})\prodvec\vvv{c}
+    &=
+      \begin{vmatrix}
+        \xhat{u}_{1} & \xhat{u}_{2} & \xhat{u}_{3}\\
+        a_{1} + b_{1} & a_{2} + b_{2} & a_{3} + b_{3}\\
+        c_{1} & c_{2} & c_{3}
+      \end{vmatrix}
+    =
+      \begin{vmatrix}
+        \xhat{u}_{1} & \xhat{u}_{2} & \xhat{u}_{3}\\
+        a_{1} & a_{2} & a_{3}\\
+        c_{1} & c_{2} & c_{3}
+      \end{vmatrix}
+    +
+      \begin{vmatrix}
+        \xhat{u}_{1} & \xhat{u}_{2} & \xhat{u}_{3}\\
+        b_{1} & b_{2} & b_{3}\\
+        c_{1} & c_{2} & c_{3}
+      \end{vmatrix}
+    =
+      \vvv{a}\prodvec\vvv{c} + \vvv{b}\prodvec\vvv{c}                    
+  \end{align*}
+  
+\end{soluc}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: t
+%%% End:

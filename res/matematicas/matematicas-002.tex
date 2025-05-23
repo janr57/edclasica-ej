@@ -1,0 +1,307 @@
+% matematicas-002.tex
+%
+% Copyright (C) 2019-2025 José A. Navarro Ramón <janr.devel@gmail.com>
+% ....................................................................
+% OBSERVACIÓN: Se puede dar formato al búffer en AUCTeX con: M-x L-buff RET
+% ....................................................................
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{../edclasica-res.pkg}
+\usepackage{../edclasica-res.defs}
+
+% ********************************************************************
+% ******* DEFINICIONES DE ESTE EJERCICIO *****************************
+% ********************************************************************
+% Bloques de ejercicios
+\renewcommand*{\mainsubject}{Análisis Vectorial}
+\renewcommand*{\parte}{EJERCICIOS DE ELECTRODINÁMICA CLÁSICA}
+\renewcommand*{\tipoBloque}{Problema}
+\renewcommand*{\bloque}{1}
+\renewcommand*{\hoja}{1}
+\renewcommand*{\ejBloque}{2}
+% Fuente: examen
+% \renewcommand*{\ejExamen}{1}
+\renewcommand*{\fuente}{Introduction to Electrodynamics - Griffiths - 4th Ed.
+  Exercise 1.2 Page 4.}
+
+% *****************************************************************************
+\directlua{dofile "lua/cartesianas_esfericas.lua"}
+
+\newcommand*{\xcoord}[3]{%
+  \directlua{tex.write(
+    spherical2x(#1,#2,#3))}
+}
+
+\newcommand*{\ycoord}[3]{%
+  \directlua{tex.write(
+    spherical2y(#1,#2,#3))}
+}
+
+\newcommand*{\zcoord}[3]{%
+  \directlua{tex.write(
+    spherical2z(#1,#2,#3))}
+}
+
+\begin{document}
+% ############################ ENUNCIADO ######################################
+% Entrada en el índice del fichero 'pdf' 'enunciado.0'
+\pdfbookmark[0]{Enunciado}{enunciado}
+
+% --------------------------------------------------------------------
+% 
+% --------------------------------------------------------------------
+\begin{qboxshort}
+  ¿Es asociativo el producto vectorial?
+
+  \[
+    (\vvv{A}\prodvec\vvv{B})\prodvec\vvv{C}
+    \questeq
+    \vvv{A}\prodvec (\vvv{B}\prodvec\vvv{C})
+  \]
+
+  Demuéstrelo si lo es o muestre el contraejemplo, lo más simple posible,
+  en caso contrario.
+\end{qboxshort}
+
+% ######################### RESOLUCIÓN ###############################
+
+% ================ APARTADO a) =======================================
+% Entrada en el índice del fichero 'pdf'
+\pdfbookmark[0]{Solución}{sol}
+
+\begin{soluc}
+
+\item
+  Demostraremos que el producto vectorial no tiene la
+  propiedad asociativa. 
+
+  Realizamos cálculos intermedios
+  \begin{align*}
+    \vvv{A}\prodvec\vvv{B}
+    &=
+    \begin{vmatrix}
+      \xhat{u}_{x} & \xhat{u}_{y} & \xhat{u}_{z}\\
+      A_{x} & A_{y} & A_{z}\\
+      B_{x} & B_{y} & B_{z}
+    \end{vmatrix}
+    =
+    \xhat{u}_{x}
+    \begin{vmatrix}
+      A_{y} & A_{z}\\
+      B_{y} & B_{z}
+    \end{vmatrix}
+    +
+    \xhat{u}_{y}
+    \begin{vmatrix}
+      A_{z} & A_{x}\\
+      B_{z} & B_{x}
+    \end{vmatrix}
+    +
+    \xhat{u}_{z}
+    \begin{vmatrix}
+      A_{x} & A_{y}\\
+      B_{x} & B_{y}
+    \end{vmatrix}\\
+    &=
+    (A_{y}B_{z}-A_{z}B_{y})\,\xhat{u}_{x}
+    +
+    (A_{z}B_{x}-A_{x}B_{z})\,\xhat{u}_{y}
+    +
+    (A_{x}B_{y}-A_{y}B_{x})\,\xhat{u}_{z}
+  \end{align*}
+
+    \begin{align*}
+    \vvv{B}\prodvec\vvv{C}
+    &=
+    \begin{vmatrix}
+      \xhat{u}_{x} & \xhat{u}_{y} & \xhat{u}_{z}\\
+      B_{x} & B_{y} & B_{z}\\
+      C_{x} & C_{y} & C_{z}
+    \end{vmatrix}
+    =
+    \xhat{u}_{x}
+    \begin{vmatrix}
+      B_{y} & B_{z}\\
+      C_{y} & C_{z}
+    \end{vmatrix}
+    +
+    \xhat{u}_{y}
+    \begin{vmatrix}
+      B_{z} & B_{x}\\
+      C_{z} & C_{x}
+    \end{vmatrix}
+    +
+    \xhat{u}_{z}
+    \begin{vmatrix}
+      B_{x} & B_{y}\\
+      C_{x} & C_{y}
+    \end{vmatrix}\\
+    &=
+    (B_{y}C_{z}-B_{z}C_{y})\,\xhat{u}_{x}
+    +
+    (B_{z}C_{x}-B_{x}C_{z})\,\xhat{u}_{y}
+    +
+    (B_{x}C_{y}-B_{y}C_{x})\,\xhat{u}_{z}
+  \end{align*}
+
+  Ahora calculamos la expresión de la izquierda de la propiedad asociativa
+  del enunciado
+  \begin{align*}
+    (\vvv{A}\prodvec\vvv{B})\prodvec\vvv{C}
+    &=
+    \begin{vmatrix}
+      \xhat{u}_{x} & \xhat{u}_{y} & \xhat{u}_{z}\\
+      A_{y}B_{z}-A_{z}B_{y} & A_{z}B_{x}-A_{x}B_{z} & A_{x}B_{y}-A_{y}B_{x}\\
+      C_{x} & C_{y} & C_{z}
+    \end{vmatrix}\\
+    &=
+      \xhat{u}_{x}
+      {\small\begin{vmatrix}
+        A_{z}B_{x}-A_{x}B_{z} & A_{x}B_{y}-A_{y}B_{x}\\
+        C_{y} & C_{z}
+      \end{vmatrix}}
+      +
+      \xhat{u}_{y}
+      {\small\begin{vmatrix}
+        A_{x}B_{y}-A_{y}B_{x} & A_{y}B_{z}-A_{z}B_{y}\\
+        C_{z} & C_{x}
+      \end{vmatrix}}
+      +
+      \xhat{u}_{z}
+      {\small\begin{vmatrix}
+        A_{y}B_{z}-A_{z}B_{y} & A_{z}B_{x}-A_{x}B_{z}\\
+        C_{x} & C_{y}
+      \end{vmatrix}}\\
+    &=
+      \left(A_{z}B_{x}C_{z}-A_{x}B_{z}C_{z}-A_{x}B_{y}C_{y}+A_{y}B_{x}C_{y}\right)\,\xhat{u}_{x}\\
+    &\hspace{1em}+
+      \left((A_{x}B_{y}C_{x}-A_{y}B_{x}C_{x}-A_{y}B_{z}C_{z}+A_{z}B_{y}C_{z}\right)\,\xhat{u}_{y}\\
+    &\hspace{1em}+
+      \left(A_{y}B_{z}C_{y}-A_{z}B_{y}C_{y}-A_{z}B_{x}C_{x}+A_{x}B_{z}C_{x}\right)\,\xhat{u}_{z}
+  \end{align*}
+
+  El segundo miembro es 
+  \begin{align*}
+    \vvv{A}\prodvec(\vvv{B}\prodvec\vvv{C})
+    &=
+    \begin{vmatrix}
+      \xhat{u}_{x} & \xhat{u}_{y} & \xhat{u}_{z}\\
+      A_{x} & A_{y} & A_{z}\\
+      B_{y}C_{z}-B_{z}C_{y} & B_{z}C_{x}-B_{x}C_{z} & B_{x}C_{y}-B_{y}C_{x}
+    \end{vmatrix}\\
+    &=
+      \xhat{u}_{x}
+      {\small\begin{vmatrix}
+        A_{y} & A_{z}\\
+        B_{z}C_{x}-B_{x}C_{z} & B_{x}C_{y}-B_{y}C_{x}
+      \end{vmatrix}}
+      +
+      \xhat{u}_{y}
+      {\small\begin{vmatrix}
+        A_{z} & A_{x}\\                              
+        B_{x}C_{y}-B_{y}C_{x} & B_{y}C_{z}-B_{z}C_{y}
+      \end{vmatrix}}
+      +
+      \xhat{u}_{z}
+      {\small\begin{vmatrix}
+        A_{x} & A_{y}\\                            
+        B_{y}C_{z}-B_{z}C_{y} & B_{z}C_{x}-B_{x}C_{z}
+      \end{vmatrix}}\\
+    &=
+      \left(A_{y}B_{x}C_{y}-A_{y}B_{y}C_{x}-A_{z}B_{z}C_{x}+A_{z}B_{x}C_{z}\right)\,\xhat{u}_{x}\\
+    &\hspace{1em}+
+      \left((A_{z}B_{y}C_{z}-A_{z}B_{z}C_{y}-A_{x}B_{x}C_{y}+A_{x}B_{y}C_{x}\right)\,\xhat{u}_{y}\\
+    &\hspace{1em}+
+      \left(A_{x}B_{z}C_{x}-A_{x}B_{x}C_{z}-A_{y}B_{y}C_{z}+A_{y}B_{z}C_{y}\right)\,\xhat{u}_{z}
+  \end{align*}
+
+  Para que se cumpla la propiedad asociativa, las dos expresiones deben
+  ser iguales componente a componente, para todo conjunto de vectores
+  $\vvv{A}$, $\vvv{B}$ y $\vvv{C}$
+  \begin{itemize}
+  \item Componente $x$
+    \[
+    \cancelout{A_{z}B_{x}C_{z}} - A_{x}B_{z}C_{z} - A_{x}B_{y}C_{y} + \cancelout{A_{y}B_{x}C_{y}}
+    =
+    \cancelout{A_{y}B_{x}C_{y}}-A_{y}B_{y}C_{x}-A_{z}B_{z}C_{x}+\cancelout{A_{z}B_{x}C_{z}}
+  \]
+  \begin{equation}\label{eq:componentex}
+    A_{x}B_{z}C_{z} + A_{x}B_{y}C_{y}
+    =
+    A_{y}B_{y}C_{x} + A_{z}B_{z}C_{x}
+    ~;\hspace{2em}
+    \forall \vvv{A}, \vvv{B}, \vvv{C} \in \mathbb{R}^{3}
+  \end{equation}
+
+\item Componente $y$
+    \[
+      \cancelout{A_{x}B_{y}C_{x}}-A_{y}B_{x}C_{x}-A_{y}B_{z}C_{z}+\cancelout{A_{z}B_{y}C_{z}}
+    =
+      \cancelout{A_{z}B_{y}C_{z}}-A_{z}B_{z}C_{y}-A_{x}B_{x}C_{y}+\cancelout{A_{x}B_{y}C_{x}}
+  \]
+  \begin{equation}\label{eq:componentey}
+      A_{y}B_{x}C_{x} + A_{y}B_{z}C_{z}
+    =
+      A_{z}B_{z}C_{y} + A_{x}B_{x}C_{y}
+    ~;\hspace{2em}
+    \forall \vvv{A}, \vvv{B}, \vvv{C} \in \mathbb{R}^{3}
+  \end{equation}
+
+\item Componente $z$
+  \[
+      \cancelout{A_{y}B_{z}C_{y}}-A_{z}B_{y}C_{y}-A_{z}B_{x}C_{x}+\cancelout{A_{x}B_{z}C_{x}}
+      =
+      \cancelout{A_{x}B_{z}C_{x}}-A_{x}B_{x}C_{z}-A_{y}B_{y}C_{z}+\cancelout{A_{y}B_{z}C_{y}}
+  \]
+  \begin{equation}\label{eq:componentez}
+      A_{z}B_{y}C_{y} + A_{z}B_{x}C_{x}
+      =
+      A_{x}B_{x}C_{z} + A_{y}B_{y}C_{z}
+    ~;\hspace{2em}
+    \forall \vvv{A}, \vvv{B}, \vvv{C} \in \mathbb{R}^{3}
+  \end{equation}
+
+\end{itemize}
+
+Las igualdades~(\ref{eq:componentex}), ~(\ref{eq:componentey})
+y (\ref{eq:componentez}) no tienen que cumplirse necesariamente
+para todo conjunto de vectores $\vvv{A}$, $\vvv{B}$ y $\vvv{C}$
+(aunque en algunos casos particulares podrían cumplirse, como
+cuando $\vvv{A} = \xhat{u}_{x}$, $\vvv{B} = \xhat{u}_{y}$ y
+$\vvv{C} = \xhat{u}_{z}$),
+por lo que concluimos que el producto vectorial no es asociativo.
+
+Un contraejemplo sencillo podría ser,
+$\vvv{A} = \xhat{u}_{x}$, $\vvv{B} = \xhat{u}_{y}$ y
+$\vvv{C} = \xhat{u}_{y}$
+
+Así
+\begin{align*}
+  (\vvv{A}\prodvec\vvv{B})\prodvec\vvv{C}
+  =
+  (\xhat{u}_{x}\prodvec\vvv{u}_{y})\prodvec\xhat{u}_{y}
+  = \xhat{u}_{z}\prodvec\xhat{u}_{y}
+  = -\xhat{u}_{x}
+\end{align*}
+que es diferente de
+\begin{align*}
+  \vvv{A}\prodvec(\vvv{B}\prodvec\vvv{C})
+  =
+  \xhat{u}_{x}\prodvec(\xhat{u}_{y}\prodvec\xhat{u}_{y})
+  = \xhat{u}_{x}\prodvec\vvv{0}
+  = \vvv{0}
+\end{align*}
+
+
+\end{soluc}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-engine: luatex
+%%% TeX-master: t
+%%% End:

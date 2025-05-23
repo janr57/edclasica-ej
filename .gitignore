@@ -1,0 +1,47 @@
+## Core tex auxiliary files:
+*.aux
+*.log
+*.toc
+*~
+*-bak
+
+## Documentos
+edclasica-ej.pdf
+
+# Subdirectorios
+## 'auto' folder when using emacs and auctex
+./auto/*
+*.el
+bak
+soft
+
+./portada/*.aux
+./portada/*~
+./portada/auto/*
+
+./tablacontenidos/*.aux
+./tablacontenidos/*~
+./tablacontenidos/auto/*
+
+./ejercicios/*.aux
+./ejercicios/*~
+./ejercicios/auto/*
+
+./img/*.pdf
+./img/titulo/*.pdf
+./img/titulo/edclasica-ej-orange.pdf
+./img/logo/*.pdf
+
+./res/*.log
+./res/auto
+./res/matematicas/*.aux
+./res/matematicas/*.log
+./res/matematicas/*.pdf
+./res/matematicas/auto/*
+./res/electrostatica/*.aux
+./res/electrostatica/*.log
+!./res/electrostatica/ScriptR.pdf
+!./res/electrostatica/BoldR.pdf
+./res/electrostatica/*.pdf
+./res/electrostatica/auto/*
+
