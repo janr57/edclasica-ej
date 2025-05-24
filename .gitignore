@@ -10,38 +10,38 @@ edclasica-ej.pdf
 
 # Subdirectorios
 ## 'auto' folder when using emacs and auctex
-./auto/*
+auto/*
 *.el
 bak
 soft
 
-./portada/*.aux
-./portada/*~
-./portada/auto/*
+portada/*.aux
+portada/*~
+portada/auto/*
 
-./tablacontenidos/*.aux
-./tablacontenidos/*~
-./tablacontenidos/auto/*
+tablacontenidos/*.aux
+tablacontenidos/*~
+tablacontenidos/auto/*
 
-./ejercicios/*.aux
-./ejercicios/*~
-./ejercicios/auto/*
+ejercicios/*.aux
+ejercicios/*~
+ejercicios/auto/*
 
-./img/*.pdf
-./img/titulo/*.pdf
-./img/titulo/edclasica-ej-orange.pdf
-./img/logo/*.pdf
+img/*.pdf
+img/titulo/*.pdf
+img/titulo/*.eps
+img/logo/*.pdf
 
-./res/*.log
-./res/auto
-./res/matematicas/*.aux
-./res/matematicas/*.log
-./res/matematicas/*.pdf
-./res/matematicas/auto/*
-./res/electrostatica/*.aux
-./res/electrostatica/*.log
-!./res/electrostatica/ScriptR.pdf
-!./res/electrostatica/BoldR.pdf
-./res/electrostatica/*.pdf
-./res/electrostatica/auto/*
+res/*.log
+res/auto
+res/matematicas/*.aux
+res/matematicas/*.log
+res/matematicas/*.pdf
+res/matematicas/auto/*
+res/electrostatica/*.aux
+res/electrostatica/*.log
+!res/electrostatica/ScriptR.pdf
+!res/electrostatica/BoldR.pdf
+res/electrostatica/*.pdf
+res/electrostatica/auto/*
 
