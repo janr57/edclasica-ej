@@ -35,25 +35,36 @@
 % Idioma
 \RequirePackage{polyglossia}
 \setmainlanguage{spanish}
+\RequirePackage{microtype}
+
 % ---------------------------------------------
 % Tipos de letra
-% Mi estándar
+%% -------
+% Main font
 \setmainfont{XITS}
+%\setmainfont{Linux Libertine O}
+% -------
+% Sans font
 \setsansfont{Linux Biolinum O}
+% -------
+% Mono font
+\setmonofont{InconsolataN-Regular}
 %\setmonofont[Scale=MatchLowercase]{Inconsolata}
-\setmonofont{Inconsolata}
-%\setmonofont{Fira Mono}
-%\setmathfont{Asana-Math}
-% 
-% Latin Modern
-%\setmainfont{LMRoman10-Regular}
-%\setsansfont{LMSans10-Regular}
-%\setmonofont{LMMono10-Regular}
-%\setmathfont{LatinModernMath-Regular}
-%
+% \setmonofont{Fira Mono}
+% -------
+% Math font
+% Available for 'unicode-math':
+% Latin Modern Math (1585 symbols)
+% XITS Math (2425 symbols)
+% STIX Math (2394 symbols)
+% Cambria Math (1588 symbols)
+% Asana Math (2252 symbols)
+% TeX Gyre Pagella Math (1638 symbols)
+% DejaVu Math TeX Gyre (1648 symbols)
+% Neo Euler (576 symbols)
+% \setmathfont{Asana-Math}
 \setmathfont{XITS-Math}
-% Para la fecha en la portada
-\newfontfamily\fontPortada{Century Schoolbook Bold}
+
 % ---------------------------------------------
 % Permite código 'lua'
 \RequirePackage{luacode}
