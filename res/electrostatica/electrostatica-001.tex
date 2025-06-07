@@ -80,7 +80,6 @@
     = \text{constante}
     \hspace{2em}k=0,1,2,\cdots 11
   \]
-  
   \begin{figure}[ht]
     \def\scl{1}
     \def\lado{2.5}
@@ -88,50 +87,48 @@
     \def\Qsize{6.5pt}
     \centering
     \begin{minipage}{0.45\linewidth}
-    \begin{tikzpicture}[scale=\scl]
-      \coordinate (m0) at (0:\lado);
-      \foreach[remember=\p as \pold (initially 0)]
-      \p in {1,...,11,0}{
-        \coordinate (m\p) at (30*\p:\lado);
-        \draw[ultra thin,black!20] (m\pold) -- (m\p);
-        \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
-        \node at (m\pold) {\footnotesize $q_{\pold}$};
-    }
-    \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
-    \node at (m0) {\footnotesize $q_{0}$};
-    \filldraw[fill=green!80,draw=green!40!black] (0,0) circle [radius=\Qsize];
-    \node at (0,0) {\footnotesize$Q$};
-  \end{tikzpicture}
-\end{minipage}
-\hspace{2em}
-\begin{minipage}{0.45\linewidth}
-  \begin{tikzpicture}[scale=\scl]
-      \coordinate (m0) at (0:\lado);
-      \foreach[evaluate=\p as \f using {int(mod(\p+6,12))},
-      remember=\p as \pold (initially 0)] \p in {1,2,...,11,0}{
-        \coordinate (m\p) at (30*\p:\lado);
-        \draw[ultra thin,black!20] (m\pold) -- (m\p);
-        \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
-        \node at (m\pold) {\footnotesize $q_{\pold}$};
-        \draw[-{Latex[round]},shorten >=10mm] (0,0) -- (m\p)
-             node[pos=0.70] {\footnotesize $\vvv{F}_{\f}$};
-    }
-    \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
-    \node at (m0) {\footnotesize $q_{0}$};
-    
-    \filldraw[fill=green!80,draw=green!40!black] (0,0) circle [radius=\Qsize];
-    \node at (0,0) {\footnotesize$Q$};
-    \end{tikzpicture}
-  \end{minipage}
-
-\caption{Doce cargas iguales $q_{0}= q_{1}= \cdots = q_{11} = q$ en amarillo,
-  situadas sobre los vértices de un dodecágono regular y una carga de prueba
-  $Q$ en verde, en su centro. Si se supone que las cargas $q$ y $Q$ tienen el
-  mismo signo, las fuerzas serían repulsivas y tienen el mismo módulo.
-  Si en cambio, fueran de signo contrario, serían fuerzas atractivas
-  (habría que redibujarlas, pero seguirían teniendo el mismo módulo.}
-\label{fig:cargas_en_dodecagono}
-\end{figure}
+      \begin{tikzpicture}[scale=\scl]
+        \coordinate (m0) at (0:\lado);
+        \foreach[remember=\p as \pold (initially 0)]
+        \p in {1,...,11,0}{
+          \coordinate (m\p) at (30*\p:\lado);
+          \draw[ultra thin,black!20] (m\pold) -- (m\p);
+          \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
+          \node at (m\pold) {\footnotesize $q_{\pold}$};
+        }
+        \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
+        \node at (m0) {\footnotesize $q_{0}$};
+        \filldraw[fill=green!80,draw=green!40!black] (0,0) circle [radius=\Qsize];
+        \node at (0,0) {\footnotesize$Q$};
+      \end{tikzpicture}
+    \end{minipage}
+    \hspace{2em}
+    \begin{minipage}{0.45\linewidth}
+      \begin{tikzpicture}[scale=\scl]
+        \coordinate (m0) at (0:\lado);
+        \foreach[evaluate=\p as \f using {int(mod(\p+6,12))},
+        remember=\p as \pold (initially 0)] \p in {1,2,...,11,0}{
+          \coordinate (m\p) at (30*\p:\lado);
+          \draw[ultra thin,black!20] (m\pold) -- (m\p);
+          \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
+          \node at (m\pold) {\footnotesize $q_{\pold}$};
+          \draw[-{Latex[round]},shorten >=10mm] (0,0) -- (m\p)
+          node[pos=0.70] {\footnotesize $\vvv{F}_{\f}$};
+        }
+        \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
+        \node at (m0) {\footnotesize $q_{0}$};
+        \filldraw[fill=green!80,draw=green!40!black] (0,0) circle [radius=\Qsize];
+        \node at (0,0) {\footnotesize$Q$};
+      \end{tikzpicture}
+    \end{minipage}
+    \caption{Doce cargas iguales $q_{0}= q_{1}= \cdots = q_{11} = q$ en amarillo,
+      situadas sobre los vértices de un dodecágono regular y una carga de prueba
+      $Q$ en verde, en su centro. Si se supone que las cargas $q$ y $Q$ tienen el
+      mismo signo, las fuerzas serían repulsivas y tienen el mismo módulo.
+      Si en cambio, fueran de signo contrario, serían fuerzas atractivas
+      (habría que redibujarlas, pero seguirían teniendo el mismo módulo.}
+    \label{fig:cargas_en_dodecagono}
+  \end{figure}
 
 Cuando el polígono regular tiene un número par de lados, como en este caso,
 se aprecia claramente que cada una de las fuerzas que actúan sobre la carga de
