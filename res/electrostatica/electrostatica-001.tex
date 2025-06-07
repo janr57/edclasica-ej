@@ -60,19 +60,25 @@
 
 \begin{soluc}
 \item A la izquierda de la figura~\ref{fig:cargas_en_dodecagono} se representan
-  las doce cargas iguales $q_{0} = q_{1} = \cdots = q_{11} = q$, situadas sobre
-  los vértices de un polígono regular de doce lados y una carga de prueba $Q$
-  en su centro.
+  doce cargas iguales numeradas\footnotemark{}
+  \footnotetext{Se podrían numerar del 1 al 12. En este caso se hace así para
+    que la numeración coincida con la de la segunda demostración.}
+  $q_{0} = q_{1} = \cdots = q_{11} = q$, situadas sobre los vértices de un
+  polígono regular de doce lados y una carga de prueba $Q$ en su centro.
   La conclusión a la que llegaremos no dependerá del signo de las cargas, de
-  manera que supondremos que las cargas $q$ y $Q$ tienen el mismo signo,
-  así la fuerza eléctrica de entre las cargas es repulsiva.
-  A la derecha de la misma figura se representan las fuerzas entre cada carga
-  $q_{k}$ y la carga de prueba central $Q$. Estas fuerzas tienen el mismo módulo
+  manera que supondremos que $q$ y $Q$ tienen el mismo signo, así la fuerza
+  eléctrica de entre las cargas es repulsiva (en caso contrario sería
+  atractiva).
+  A la derecha de la misma figura se representan las fuerzas (en este caso,
+  repulsivas) entre cada carga $q_{k}$ y la carga de prueba central $Q$.
+  Todas ellas tienen el mismo módulo
   \[
-    |\vec{F}_{k}|
+    F_{k}
+    = |\vvv{F}_{k}|
     = \dfrac{1}{4\pi\epsilon_{0}} \dfrac{Q q_{k}}{r_{k}^{2}}
     = \dfrac{1}{4\pi\epsilon_{0}} \dfrac{Q q}{r^{2}}
     = \text{constante}
+    \hspace{2em}k=0,1,2,\cdots 11
   \]
   
   \begin{figure}[ht]
@@ -108,7 +114,7 @@
         \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
         \node at (m\pold) {\footnotesize $q_{\pold}$};
         \draw[-{Latex[round]},shorten >=10mm] (0,0) -- (m\p)
-             node[pos=0.70] {\footnotesize $\vec{F}_{\f}$};
+             node[pos=0.70] {\footnotesize $\vvv{F}_{\f}$};
     }
     \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
     \node at (m0) {\footnotesize $q_{0}$};
@@ -122,18 +128,18 @@
   situadas sobre los vértices de un dodecágono regular y una carga de prueba
   $Q$ en verde, en su centro. Si se supone que las cargas $q$ y $Q$ tienen el
   mismo signo, las fuerzas serían repulsivas y tienen el mismo módulo.
-  Si en cambio fueran de signo contrario, serían fuerzas atractivas pero
-  seguirían teniendo el mismo módulo.}
+  Si en cambio, fueran de signo contrario, serían fuerzas atractivas
+  (habría que redibujarlas, pero seguirían teniendo el mismo módulo.}
 \label{fig:cargas_en_dodecagono}
 \end{figure}
 
 Cuando el polígono regular tiene un número par de lados, como en este caso,
 se aprecia claramente que cada una de las fuerzas que actúan sobre la carga de
 prueba se corresponde con otra fuerza opuesta --véanse, por ejemplo
-$\vec{F}_{6}$ y $\vec{F}_{0}$--, dando en total una resultante nula
-\[
-  \vec{R} = \sum_{k=0}^{11} \vec{F}_{k} = 0
-\]
+$\vvv{F}_{6}$ y $\vvv{F}_{0}$--, dando en total una resultante $\vvv{R}$ nula
+\begin{equation}\label{eq:equilibrioA}
+  \vvv{R} = \sum_{k=0}^{11} \vvv{F}_{k} = 0
+\end{equation}
 
  %\bigskip
   % ================ APARTADO b) ==============================
@@ -141,20 +147,22 @@ $\vec{F}_{6}$ y $\vec{F}_{0}$--, dando en total una resultante nula
   \pdfbookmark[0]{Apartado b}{b}
 \item Si se elimina una de las doce cargas, por ejemplo $q_{11}$, la resultante
   de las fuerzas repulsivas que las restantes cargas ejercen sobre $q$ sería
-  $\vec{R}' = \sum_{k=0}^{10} \vec{F}_{k}$
+  $\vvv{R}' = \sum_{k=0}^{10} \vvv{F}_{k}$
+  Partimos de la expresión de equilibrio \eqref{eq:equilibrioA} del apartado
+  anterior y separamos la fuerza $\vvv{F_{11}}$
   \[
-    \vec{R}
-    = \sum_{k=0}^{11} \vec{F}_{k}
-    = \sum_{k=0}^{10} \vec{F}_{k} + \vec{F}_{11}
-    = \vec{R}' + \vec{F}_{11}
+    \vvv{R}
+    = \sum_{k=0}^{11} \vvv{F}_{k}
+    = \sum_{k=0}^{10} \vvv{F}_{k} + \vvv{F}_{11}
+    = \vvv{R}' + \vvv{F}_{11}
     = 0
   \]
   Despejando la suma de las fuerzas que actúan sobre la carga de prueba
   demostramos que la nueva resultante es la opuesta de la fuerza que ejercería
   la carga que hemos eliminado, que en nuestro ejemplo es
-  $-\vec{F}_{11} = \vec{F}_{5}$
+  $-\vvv{F}_{11} = \vvv{F}_{5}$
   \[
-    \vec{R}' = \sum_{k=0}^{10} \vec{F}_{k} = -\vec{F}_{11} = \vec{F}_{5}
+    \vvv{R}' = \sum_{k=0}^{10} \vvv{F}_{k} = -\vvv{F}_{11} = \vvv{F}_{5}
   \]
   
 %\bigskip
@@ -202,7 +210,7 @@ $\vec{F}_{6}$ y $\vec{F}_{0}$--, dando en total una resultante nula
         \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
         \node at (m\pold) {\footnotesize $q_{\pold}$};
         \draw[-{Latex[round]},shorten >=10mm] (0,0) -- (m\p)
-             node[pos=0.70] {\footnotesize $\vec{F}_{\f}$};
+             node[pos=0.70] {\footnotesize $\vvv{F}_{\f}$};
     }
     \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
     \node at (m0) {\footnotesize $q_{0}$};
@@ -236,12 +244,12 @@ Podemos afirmar que
 \end{quotation}
 
 Para convencernos de lo anterior recordemos primero que hemos etiquetado
-las cargas $q$ en los vértices y las fuerzas $\vec{F}$ sobre la carga de
+las cargas $q$ en los vértices y las fuerzas $\vvv{F}$ sobre la carga de
 prueba para distinguirlas, pero que valen lo mismo en el caso de las cargas
 y las fuerzas tienen el mismo módulo.
 
 Ahora supondremos que la resultante no se anula. Entonces, por ser un vector
-no nulo, $\vec{F}\ne 0$, debería tener una cierta dirección y sentido.
+no nulo, $\vvv{F}\ne 0$, debería tener una cierta dirección y sentido.
 Demostraremos que esto nos conduce a una contradicción por lo que
 concluiremos que la resultante se debe anular.
 
@@ -265,7 +273,7 @@ sin etiquetarlas.
         \filldraw[fill=yellow!30,draw=black!40] (m\pold) circle[radius=\qsize];
         \node at (m\pold) {\footnotesize $q$};
         \draw[-{Latex[round]},shorten >=10mm] (0,0) -- (m\p)
-             node[pos=0.70] {\footnotesize $\vec{F}$};
+             node[pos=0.70] {\footnotesize $\vvv{F}$};
     }
     \filldraw[fill=yellow!30,draw=black!40] (m0) circle[radius=\qsize];
     \node at (m0) {\footnotesize $q$};
@@ -289,7 +297,7 @@ sin etiquetarlas.
     \node at (m0) {\footnotesize $q$};
 
     \draw[-{Latex[round]},shorten >=10mm] (0,0) -- (65:\lado)
-         node[pos=0.70] {\footnotesize $\vec{R}$};
+         node[pos=0.70] {\footnotesize $\vvv{R}$};
     
     \filldraw[fill=green!80,draw=green!40!black] (0,0) circle [radius=\Qsize];
     \node at (0,0) {\footnotesize$Q$};
@@ -316,13 +324,13 @@ que actúan sobre la carga de prueba, que hemos supuesto que no es nula y tiene
 por tanto una cierta dirección y sentido que elegimos al azar. 
 Pero si giramos la figura de la derecha según el eje de simetría de la figura
 deberíamos llegar a una situación indistinguible de la original, pero esto
-no ocurre con la resultante $\vec{R}$ que hemos dibujado, pues nos daríamos cuenta
+no ocurre con la resultante $\vvv{R}$ que hemos dibujado, pues nos daríamos cuenta
 de que se ha girado. De hecho, no importa cómo representemos la resultante no
 nula; nunca cumplirá con la simetría del sistema.
 La única manera de que la resultante obedezca la simetría del sistema es que
 se anule
 \[
-  \vec{R} = \sum_{k=0}^{13} F_{k} = 0
+  \vvv{R} = \sum_{k=0}^{13} F_{k} = 0
 \]
 
 \item Ahora demostraremos que la resultante es nula de una forma más elaborada
@@ -363,7 +371,7 @@ se anule
     \filldraw[fill=green!80,draw=green!40!black] (O) circle [radius=\Qsize];
     \node at (O) {\footnotesize$Q$};
   \end{tikzpicture}
-    \caption{En esta figura se representan las $N$ fuerzas $\vec{F}_{k}$ sobre la
+    \caption{En esta figura se representan las $N$ fuerzas $\vvv{F}_{k}$ sobre la
     carga de prueba utilizando un pentágno regular como modelo de polígono
     regular de $N$ lados. El ángulo entre dos fuerzas adyacentes es $2\pi/N$.
   En el diagrama las fuerzas se numeran con $k=0,1,\cdots,N-1$.}
@@ -371,23 +379,23 @@ se anule
   \end{minipage}
 \end{figure}
 
-En el diagrama tenemos $N$ fuerzas $\vec{F}_{k}$, con $k=0,1,\cdots,N-1$.
-El ángulo de la fuerza $\vec{F}_{k}$ con el eje de abcisas (horizonal) es
+En el diagrama tenemos $N$ fuerzas $\vvv{F}_{k}$, con $k=0,1,\cdots,N-1$.
+El ángulo de la fuerza $\vvv{F}_{k}$ con el eje de abcisas (horizonal) es
 \[
   \theta_{k} = k\,\frac{2\pi}{N}
   \hspace{2em}\text{con }
   k = 0,1,\cdots, N-1
 \]
 
-Cada fuerza $\vec{F}_{k}$ se debe a la interacción de la carga $q_{k}$ con $Q$.
+Cada fuerza $\vvv{F}_{k}$ se debe a la interacción de la carga $q_{k}$ con $Q$.
 Esta interacción puede ser atractiva o repulsiva. Se debe hacer hincapié en
 que el polígono regular representado es el que forman los extremos de los
-vectores fuerza $\vec{F}_{k}$ y no necesariamente el que forman las cargas
+vectores fuerza $\vvv{F}_{k}$ y no necesariamente el que forman las cargas
 $q_{k}$.
 
 La fuerza que ejerce $q_{k}$ sonbre la carga de prueba $Q$ es
 \[
-  \vec{F}_{k}
+  \vvv{F}_{k}
   = \frac{1}{4\pi\epsilon_{0}} \,\frac{Q\,q_{k}}{r^{2}}\,\xhat{u}_{k}
   = \frac{1}{4\pi\epsilon_{0}}\,\frac{Q\,q}{r^{2}}
     \left[
@@ -397,7 +405,7 @@ La fuerza que ejerce $q_{k}$ sonbre la carga de prueba $Q$ es
 \]
 donde $r$ es la distancia entre cada $q_{k}$ y la carga de prueba y
 $\xhat{u}_{k}$ es el vector unidad que tiene la misma dirección y
-sentido que $\vec{F}_{k}$
+sentido que $\vvv{F}_{k}$
 
 \begin{figure}[ht]
   \def\scl{1}
@@ -436,9 +444,9 @@ sentido que $\vec{F}_{k}$
 
 La fuerza neta sobre la carga de prueba $Q$ es
 \[
-  \vec{R}
+  \vvv{R}
   =
-  \sum_{k=0}^{N-1} \vec{F}_{k}
+  \sum_{k=0}^{N-1} \vvv{F}_{k}
   =
   \frac{Q\,q}{4\pi\epsilon_{0}} \sum_{k=0}^{N-1}
   \left[
@@ -449,7 +457,7 @@ La fuerza neta sobre la carga de prueba $Q$ es
 \]
 
 \begin{equation}\label{eq:resultante}
-  \vec{R}
+  \vvv{R}
   =
     \frac{Q\,q}{4\pi\epsilon_{0}}
     \left\{
@@ -562,7 +570,7 @@ Así
 Finalmente, deducimos de la ecuación~(\ref{eq:resultante}), que la
 resultante se anula
 \[
-  \vec{R}
+  \vvv{R}
   =
     \frac{Q\,q}{4\pi\epsilon_{0}}
     \left\{
@@ -584,21 +592,21 @@ resultante se anula
 \item De forma similar a como se razonó en el apartado b), si se elimina una
   de las $N$ cargas, por ejemplo $q_{i}$, la resultante
   de las fuerzas repulsivas que las restantes cargas ejercen sobre $q$ sería
-  $\vec{R}' = \sum_{k=0}^{i-1} \vec{F}_{k} + \sum_{k=i+1}^{N-1} \vec{F}_{k}$
+  $\vvv{R}' = \sum_{k=0}^{i-1} \vvv{F}_{k} + \sum_{k=i+1}^{N-1} \vvv{F}_{k}$
   \[
-    \vec{R}
-    = \sum_{k=0}^{N-1} \vec{F}_{k}
-    = \sum_{k=0}^{i-1} \vec{F}_{k} + \vec{F}_{i} + \sum_{k=i+1}^{N-1} \vec{F}_{k}
-    = \vec{F}_{i} + \vec{R}'
+    \vvv{R}
+    = \sum_{k=0}^{N-1} \vvv{F}_{k}
+    = \sum_{k=0}^{i-1} \vvv{F}_{k} + \vvv{F}_{i} + \sum_{k=i+1}^{N-1} \vvv{F}_{k}
+    = \vvv{F}_{i} + \vvv{R}'
     = 0
   \]
   Despejando la suma de las fuerzas que actúan sobre la carga de prueba
   demostramos que la nueva resultante es la opuesta de la fuerza que ejercería
   la carga que hemos eliminado, que en nuestro ejemplo es
-  $-\vec{F}_{i}$
+  $-\vvv{F}_{i}$
   \[
-    \vec{R}' = \sum_{k=0}^{i-1} \vec{F}_{k} + \sum_{k=i+1}^{N-1} \vec{F}_{k}
-    = -\vec{F}_{i}
+    \vvv{R}' = \sum_{k=0}^{i-1} \vvv{F}_{k} + \sum_{k=i+1}^{N-1} \vvv{F}_{k}
+    = -\vvv{F}_{i}
   \]
   
   
